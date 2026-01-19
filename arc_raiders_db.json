@@ -1,0 +1,2453 @@
+[
+    {
+        "id": "alarm_clock",
+        "name": "Alarm Clock",
+        "category": "Safe to Sell",
+        "sell_price": 1000,
+        "recycle_value": 860,
+        "roi_pct": -14,
+        "yields": "Mechanical Components",
+        "recommendation": "SELL",
+        "usage": {
+            "quest": {
+                "needed": false,
+                "amount": 0
+            },
+            "upgrade": []
+        }
+    },
+    {
+        "id": "broken_guidance_system",
+        "name": "Broken Guidance System",
+        "category": "Safe to Sell",
+        "sell_price": 2000,
+        "recycle_value": 2000,
+        "roi_pct": 0,
+        "yields": "Electrical Components",
+        "recommendation": "EITHER",
+        "usage": {
+            "quest": {
+                "needed": false,
+                "amount": 0
+            },
+            "upgrade": []
+        }
+    },
+    {
+        "id": "broken_handheld_radio",
+        "name": "Broken Handheld Radio",
+        "category": "Safe to Sell",
+        "sell_price": 2000,
+        "recycle_value": 1900,
+        "roi_pct": -5,
+        "yields": "Electrical Components (+4)",
+        "recommendation": "SELL",
+        "notes": "Listed as High Priority Donor for Wires on Page 3",
+        "usage": {
+            "quest": {
+                "needed": false,
+                "amount": 0
+            },
+            "upgrade": []
+        }
+    },
+    {
+        "id": "coolant",
+        "name": "Coolant",
+        "category": "Safe to Sell",
+        "sell_price": 1000,
+        "recycle_value": 750,
+        "roi_pct": -25,
+        "yields": "Chemicals",
+        "recommendation": "SELL",
+        "usage": {
+            "quest": {
+                "needed": false,
+                "amount": 0
+            },
+            "upgrade": []
+        }
+    },
+    {
+        "id": "polluted_air_filter",
+        "name": "Polluted Air Filter",
+        "category": "Safe to Sell",
+        "sell_price": 1000,
+        "recycle_value": 900,
+        "roi_pct": -10,
+        "yields": "Fabric",
+        "recommendation": "SELL",
+        "usage": {
+            "quest": {
+                "needed": false,
+                "amount": 0
+            },
+            "upgrade": []
+        }
+    },
+    {
+        "id": "industrial_charger",
+        "name": "Industrial Charger",
+        "category": "Safe to Sell",
+        "sell_price": 1000,
+        "recycle_value": 880,
+        "roi_pct": -12,
+        "yields": "Electrical Components",
+        "recommendation": "SELL",
+        "usage": {
+            "quest": {
+                "needed": false,
+                "amount": 0
+            },
+            "upgrade": []
+        }
+    },
+    {
+        "id": "headphones",
+        "name": "Headphones",
+        "category": "Safe to Sell",
+        "sell_price": 1000,
+        "recycle_value": 850,
+        "roi_pct": -15,
+        "yields": "Electrical Components",
+        "recommendation": "SELL",
+        "usage": {
+            "quest": {
+                "needed": false,
+                "amount": 0
+            },
+            "upgrade": []
+        }
+    },
+    {
+        "id": "radio",
+        "name": "Radio",
+        "category": "Safe to Sell",
+        "sell_price": 1000,
+        "recycle_value": 1000,
+        "roi_pct": 0,
+        "yields": "Electrical Components",
+        "recommendation": "EITHER",
+        "usage": {
+            "quest": {
+                "needed": false,
+                "amount": 0
+            },
+            "upgrade": []
+        }
+    },
+    {
+        "id": "radio_relay",
+        "name": "Radio Relay",
+        "category": "Safe to Sell",
+        "sell_price": 3000,
+        "recycle_value": 2010,
+        "roi_pct": -33,
+        "yields": "Electrical Components",
+        "recommendation": "SELL",
+        "usage": {
+            "quest": {
+                "needed": false,
+                "amount": 0
+            },
+            "upgrade": []
+        }
+    },
+    {
+        "id": "sample_cleaner",
+        "name": "Sample Cleaner",
+        "category": "Safe to Sell",
+        "sell_price": 3000,
+        "recycle_value": 2670,
+        "roi_pct": -11,
+        "yields": "Chemicals",
+        "recommendation": "SELL",
+        "usage": {
+            "quest": {
+                "needed": false,
+                "amount": 0
+            },
+            "upgrade": []
+        }
+    },
+    {
+        "id": "remote_control",
+        "name": "Remote Control",
+        "category": "Safe to Sell",
+        "sell_price": 1000,
+        "recycle_value": 920,
+        "roi_pct": -8,
+        "yields": "Electrical Components",
+        "recommendation": "SELL",
+        "usage": {
+            "quest": {
+                "needed": false,
+                "amount": 0
+            },
+            "upgrade": []
+        }
+    },
+    {
+        "id": "thermostat",
+        "name": "Thermostat",
+        "category": "Safe to Sell",
+        "sell_price": 1000,
+        "recycle_value": 850,
+        "roi_pct": -15,
+        "yields": "Electrical Components",
+        "recommendation": "SELL",
+        "usage": {
+            "quest": {
+                "needed": false,
+                "amount": 0
+            },
+            "upgrade": []
+        }
+    },
+    {
+        "id": "speaker_component",
+        "name": "Speaker Component",
+        "category": "Safe to Sell",
+        "sell_price": 500,
+        "recycle_value": 270,
+        "roi_pct": -46,
+        "yields": "Electrical Components",
+        "recommendation": "SELL",
+        "usage": {
+            "quest": {
+                "needed": false,
+                "amount": 0
+            },
+            "upgrade": []
+        }
+    },
+    {
+        "id": "unusable_weapon",
+        "name": "Unusable Weapon",
+        "category": "Safe to Sell",
+        "sell_price": 2000,
+        "recycle_value": 1950,
+        "roi_pct": -2.5,
+        "yields": "Weapon Parts",
+        "recommendation": "EITHER",
+        "usage": {
+            "quest": {
+                "needed": false,
+                "amount": 0
+            },
+            "upgrade": []
+        }
+    },
+    {
+        "id": "barricade_kit",
+        "name": "Barricade Kit",
+        "category": "Safe to Sell",
+        "sell_price": 640,
+        "recycle_value": 480,
+        "roi_pct": -25,
+        "yields": "Metal Parts",
+        "recommendation": "SELL",
+        "usage": {
+            "quest": {
+                "needed": false,
+                "amount": 0
+            },
+            "upgrade": []
+        }
+    },
+    {
+        "id": "burned_arc_circuitry",
+        "name": "Burned ARC Circuitry",
+        "category": "Safe to Sell",
+        "sell_price": 640,
+        "recycle_value": 480,
+        "roi_pct": -25,
+        "yields": "Electrical Components",
+        "recommendation": "SELL",
+        "usage": {
+            "quest": {
+                "needed": false,
+                "amount": 0
+            },
+            "upgrade": []
+        }
+    },
+    {
+        "id": "camera_lens",
+        "name": "Camera Lens",
+        "category": "Safe to Sell",
+        "sell_price": 640,
+        "recycle_value": 480,
+        "roi_pct": -25,
+        "yields": "Glass/Optical",
+        "recommendation": "SELL",
+        "usage": {
+            "quest": {
+                "needed": false,
+                "amount": 0
+            },
+            "upgrade": []
+        }
+    },
+    {
+        "id": "crumpled_plastic_bottle",
+        "name": "Crumpled Plastic Bottle",
+        "category": "Safe to Sell",
+        "sell_price": 270,
+        "recycle_value": 240,
+        "roi_pct": -11,
+        "yields": "Plastic Parts",
+        "recommendation": "SELL",
+        "usage": {
+            "quest": {
+                "needed": false,
+                "amount": 0
+            },
+            "upgrade": []
+        }
+    },
+    {
+        "id": "damaged_arc_powercell",
+        "name": "Damaged Arc Powercell",
+        "category": "Safe to Sell",
+        "sell_price": 293,
+        "recycle_value": 199,
+        "roi_pct": -32,
+        "yields": "Chemicals",
+        "recommendation": "SELL",
+        "usage": {
+            "quest": {
+                "needed": false,
+                "amount": 0
+            },
+            "upgrade": []
+        }
+    },
+    {
+        "id": "deflated_football",
+        "name": "Deflated Football",
+        "category": "Safe to Sell",
+        "sell_price": 1000,
+        "recycle_value": 900,
+        "roi_pct": -10,
+        "yields": "Rubber Parts",
+        "recommendation": "SELL",
+        "usage": {
+            "quest": {
+                "needed": false,
+                "amount": 0
+            },
+            "upgrade": []
+        }
+    },
+    {
+        "id": "degraded_arc_rubber",
+        "name": "Degraded ARC Rubber",
+        "category": "Safe to Sell",
+        "sell_price": 640,
+        "recycle_value": 550,
+        "roi_pct": -14,
+        "yields": "Rubber Parts",
+        "recommendation": "SELL",
+        "usage": {
+            "quest": {
+                "needed": false,
+                "amount": 0
+            },
+            "upgrade": []
+        }
+    },
+    {
+        "id": "dried_out_arc_resin",
+        "name": "Dried-Out ARC Resin",
+        "category": "Safe to Sell",
+        "sell_price": 640,
+        "recycle_value": 538,
+        "roi_pct": -16,
+        "yields": "Chemicals",
+        "recommendation": "SELL",
+        "usage": {
+            "quest": {
+                "needed": false,
+                "amount": 0
+            },
+            "upgrade": []
+        }
+    },
+    {
+        "id": "flame_spray",
+        "name": "Flame Spray",
+        "category": "Safe to Sell",
+        "sell_price": 2000,
+        "recycle_value": 1000,
+        "roi_pct": -50,
+        "yields": "Chemicals",
+        "recommendation": "SELL",
+        "usage": {
+            "quest": {
+                "needed": false,
+                "amount": 0
+            },
+            "upgrade": []
+        }
+    },
+    {
+        "id": "household_cleaner",
+        "name": "Household Cleaner",
+        "category": "Safe to Sell",
+        "sell_price": 640,
+        "recycle_value": 550,
+        "roi_pct": -14,
+        "yields": "Chemicals",
+        "recommendation": "SELL",
+        "usage": {
+            "quest": {
+                "needed": false,
+                "amount": 0
+            },
+            "upgrade": []
+        }
+    },
+    {
+        "id": "number_plate",
+        "name": "Number Plate",
+        "category": "Safe to Sell",
+        "sell_price": 270,
+        "recycle_value": 759,
+        "roi_pct": 181,
+        "yields": "Metal Parts",
+        "recommendation": "RECYCLE PRIORITY",
+        "notes": "Massive recycling gain (+181%)",
+        "usage": {
+            "quest": {
+                "needed": false,
+                "amount": 0
+            },
+            "upgrade": []
+        }
+    },
+    {
+        "id": "ruined_baton",
+        "name": "Ruined Baton",
+        "category": "Safe to Sell",
+        "sell_price": 640,
+        "recycle_value": 602,
+        "roi_pct": -6,
+        "yields": "Metal Parts",
+        "recommendation": "SELL",
+        "usage": {
+            "quest": {
+                "needed": false,
+                "amount": 0
+            },
+            "upgrade": []
+        }
+    },
+    {
+        "id": "ruined_handcuffs",
+        "name": "Ruined Handcuffs",
+        "category": "Safe to Sell",
+        "sell_price": 640,
+        "recycle_value": 480,
+        "roi_pct": -25,
+        "yields": "Metal Parts",
+        "recommendation": "SELL",
+        "usage": {
+            "quest": {
+                "needed": false,
+                "amount": 0
+            },
+            "upgrade": []
+        }
+    },
+    {
+        "id": "rusty_arc_steel",
+        "name": "Rusty ARC Steel",
+        "category": "Safe to Sell",
+        "sell_price": 640,
+        "recycle_value": 480,
+        "roi_pct": -25,
+        "yields": "Metal Parts",
+        "recommendation": "SELL",
+        "usage": {
+            "quest": {
+                "needed": false,
+                "amount": 0
+            },
+            "upgrade": []
+        }
+    },
+    {
+        "id": "spotter_relay",
+        "name": "Spotter Relay",
+        "category": "Safe to Sell",
+        "sell_price": 2000,
+        "recycle_value": 1480,
+        "roi_pct": -26,
+        "yields": "Electrical Components",
+        "recommendation": "SELL",
+        "usage": {
+            "quest": {
+                "needed": false,
+                "amount": 0
+            },
+            "upgrade": []
+        }
+    },
+    {
+        "id": "rusted_bolts",
+        "name": "Rusted Bolts",
+        "category": "Safe to Sell",
+        "sell_price": 640,
+        "recycle_value": 602,
+        "roi_pct": -6,
+        "yields": "Metal Parts",
+        "recommendation": "SELL",
+        "usage": {
+            "quest": {
+                "needed": false,
+                "amount": 0
+            },
+            "upgrade": []
+        }
+    },
+    {
+        "id": "diving_goggles",
+        "name": "Diving Goggles",
+        "category": "Safe to Sell",
+        "sell_price": 640,
+        "recycle_value": 602,
+        "roi_pct": -6,
+        "yields": "Rubber Parts",
+        "recommendation": "SELL",
+        "usage": {
+            "quest": {
+                "needed": false,
+                "amount": 0
+            },
+            "upgrade": []
+        }
+    },
+    {
+        "id": "expired_respirator",
+        "name": "Expired Respirator",
+        "category": "Safe to Sell",
+        "sell_price": 640,
+        "recycle_value": 602,
+        "roi_pct": -6,
+        "yields": "Rubber Parts",
+        "recommendation": "SELL",
+        "usage": {
+            "quest": {
+                "needed": false,
+                "amount": 0
+            },
+            "upgrade": []
+        }
+    },
+    {
+        "id": "mechanical_components",
+        "name": "Mechanical Components",
+        "category": "Material",
+        "sell_price": 640,
+        "recycle_value": 326,
+        "roi_pct": -49,
+        "yields": "Scrap",
+        "usage": {
+            "quest": {
+                "needed": false,
+                "amount": 0
+            },
+            "upgrade": [
+                {
+                    "station": "Gunsmith",
+                    "level": 2,
+                    "amount": 5
+                }
+            ]
+        },
+        "is_core": true
+    },
+    {
+        "id": "rusted_tools",
+        "name": "Rusted Tools",
+        "category": "Donor Item",
+        "sell_price": 1000,
+        "recycle_value": 900,
+        "roi_pct": -10,
+        "yields": "Steel Spring (+1)",
+        "recommendation": "RECYCLE",
+        "usage": {
+            "quest": {
+                "needed": false,
+                "amount": 0
+            },
+            "upgrade": [
+                {
+                    "station": "Gunsmith",
+                    "level": 2,
+                    "amount": 3
+                }
+            ]
+        }
+    },
+    {
+        "id": "wasp_driver",
+        "name": "Wasp Driver",
+        "category": "Workshop Material",
+        "sell_price": 1000,
+        "recycle_value": 840,
+        "roi_pct": -16,
+        "yields": "Mechanical Components",
+        "usage": {
+            "quest": {
+                "needed": true,
+                "amount": 2,
+                "details": "Keep for Quests"
+            },
+            "upgrade": [
+                {
+                    "station": "Gunsmith",
+                    "level": 2,
+                    "amount": 8
+                }
+            ]
+        }
+    },
+    {
+        "id": "rusted_gear",
+        "name": "Rusted Gear",
+        "category": "Donor Item",
+        "sell_price": 2000,
+        "recycle_value": 1580,
+        "roi_pct": -21,
+        "yields": "Mechanical Components (+1)",
+        "recommendation": "RECYCLE",
+        "usage": {
+            "quest": {
+                "needed": false,
+                "amount": 0
+            },
+            "upgrade": [
+                {
+                    "station": "Gunsmith",
+                    "level": 2,
+                    "amount": 3
+                }
+            ]
+        }
+    },
+    {
+        "id": "advanced_mechanical_components",
+        "name": "Advanced Mechanical Components",
+        "category": "Material",
+        "sell_price": 1750,
+        "recycle_value": 945,
+        "roi_pct": -46,
+        "yields": "Scrap",
+        "usage": {
+            "quest": {
+                "needed": false,
+                "amount": 0
+            },
+            "upgrade": [
+                {
+                    "station": "Gunsmith",
+                    "level": 3,
+                    "amount": 5
+                }
+            ]
+        },
+        "is_core": true
+    },
+    {
+        "id": "sentinel_firing_core",
+        "name": "Sentinel Firing Core",
+        "category": "Donor Item",
+        "sell_price": 3000,
+        "recycle_value": 2310,
+        "roi_pct": -23,
+        "yields": "Advanced Mechanical Components (+2)",
+        "recommendation": "RECYCLE",
+        "usage": {
+            "quest": {
+                "needed": false,
+                "amount": 0
+            },
+            "upgrade": [
+                {
+                    "station": "Gunsmith",
+                    "level": 3,
+                    "amount": 4
+                }
+            ]
+        }
+    },
+    {
+        "id": "electrical_components",
+        "name": "Electrical Components",
+        "category": "Material",
+        "sell_price": 640,
+        "recycle_value": 333,
+        "roi_pct": -48,
+        "yields": "Scrap",
+        "usage": {
+            "quest": {
+                "needed": false,
+                "amount": 0
+            },
+            "upgrade": [
+                {
+                    "station": "Gear Bench",
+                    "level": 2,
+                    "amount": 5
+                },
+                {
+                    "station": "Utility Station",
+                    "level": 2,
+                    "amount": 5
+                }
+            ]
+        },
+        "is_core": true
+    },
+    {
+        "id": "power_cable",
+        "name": "Power Cable",
+        "category": "Donor Item",
+        "sell_price": 1000,
+        "recycle_value": 800,
+        "roi_pct": -20,
+        "yields": "Wires (+2)",
+        "recommendation": "RECYCLE",
+        "usage": {
+            "quest": {
+                "needed": false,
+                "amount": 0
+            },
+            "upgrade": [
+                {
+                    "station": "Gear Bench",
+                    "level": 2,
+                    "amount": 3
+                }
+            ]
+        }
+    },
+    {
+        "id": "hornet_driver",
+        "name": "Hornet Driver",
+        "category": "Donor Item",
+        "sell_price": 2000,
+        "recycle_value": 1680,
+        "roi_pct": -16,
+        "yields": "Electrical Components (+2)",
+        "recommendation": "RECYCLE",
+        "usage": {
+            "quest": {
+                "needed": true,
+                "amount": 2,
+                "details": "Keep for Quests"
+            },
+            "upgrade": [
+                {
+                    "station": "Gear Bench",
+                    "level": 2,
+                    "amount": 5
+                }
+            ]
+        }
+    },
+    {
+        "id": "industrial_battery",
+        "name": "Industrial Battery",
+        "category": "Workshop Material",
+        "sell_price": 1000,
+        "recycle_value": 850,
+        "roi_pct": -15,
+        "yields": "Electrical Components",
+        "usage": {
+            "quest": {
+                "needed": false,
+                "amount": 0
+            },
+            "upgrade": [
+                {
+                    "station": "Gear Bench",
+                    "level": 3,
+                    "amount": 3
+                }
+            ]
+        }
+    },
+    {
+        "id": "advanced_electrical_components",
+        "name": "Advanced Electrical Components",
+        "category": "Material",
+        "sell_price": 1750,
+        "recycle_value": 840,
+        "roi_pct": -52,
+        "yields": "Scrap",
+        "usage": {
+            "quest": {
+                "needed": false,
+                "amount": 0
+            },
+            "upgrade": [
+                {
+                    "station": "Gear Bench",
+                    "level": 3,
+                    "amount": 5
+                },
+                {
+                    "station": "Utility Station",
+                    "level": 3,
+                    "amount": 5
+                }
+            ]
+        },
+        "is_core": true
+    },
+    {
+        "id": "bastion_cell",
+        "name": "Bastion Cell",
+        "category": "Workshop Material",
+        "sell_price": 5000,
+        "recycle_value": 3900,
+        "roi_pct": -22,
+        "yields": "Advanced Electrical Components",
+        "usage": {
+            "quest": {
+                "needed": false,
+                "amount": 0
+            },
+            "upgrade": [
+                {
+                    "station": "Gear Bench",
+                    "level": 3,
+                    "amount": 6
+                }
+            ]
+        }
+    },
+    {
+        "id": "tick_pod",
+        "name": "Tick Pod",
+        "category": "Workshop Material",
+        "sell_price": 640,
+        "recycle_value": 499,
+        "roi_pct": -22,
+        "yields": "Biological Sample",
+        "usage": {
+            "quest": {
+                "needed": false,
+                "amount": 0
+            },
+            "upgrade": [
+                {
+                    "station": "Medical Lab",
+                    "level": 2,
+                    "amount": 8
+                }
+            ]
+        }
+    },
+    {
+        "id": "durable_cloth",
+        "name": "Durable Cloth",
+        "category": "Material",
+        "sell_price": 640,
+        "recycle_value": 300,
+        "roi_pct": -53,
+        "yields": "Fabric",
+        "usage": {
+            "quest": {
+                "needed": true,
+                "amount": 1,
+                "details": "Keep for Quests"
+            },
+            "upgrade": [
+                {
+                    "station": "Medical Lab",
+                    "level": 2,
+                    "amount": 5
+                }
+            ]
+        },
+        "is_core": true
+    },
+    {
+        "id": "cracked_bioscanner",
+        "name": "Cracked Bioscanner",
+        "category": "Donor Item",
+        "sell_price": 1000,
+        "recycle_value": 900,
+        "roi_pct": -10,
+        "yields": "Battery (+2)",
+        "recommendation": "RECYCLE",
+        "usage": {
+            "quest": {
+                "needed": false,
+                "amount": 0
+            },
+            "upgrade": [
+                {
+                    "station": "Medical Lab",
+                    "level": 2,
+                    "amount": 2
+                }
+            ]
+        }
+    },
+    {
+        "id": "rusted_shut_medical_kit",
+        "name": "Rusted Shut Medical Kit",
+        "category": "Workshop Material",
+        "sell_price": 2000,
+        "recycle_value": 2000,
+        "roi_pct": 0,
+        "yields": "Medical Supplies",
+        "usage": {
+            "quest": {
+                "needed": false,
+                "amount": 0
+            },
+            "upgrade": [
+                {
+                    "station": "Medical Lab",
+                    "level": 2,
+                    "amount": 3
+                }
+            ]
+        }
+    },
+    {
+        "id": "antiseptic",
+        "name": "Antiseptic",
+        "category": "Workshop Material",
+        "sell_price": 1000,
+        "recycle_value": 500,
+        "roi_pct": -50,
+        "yields": "Chemicals",
+        "usage": {
+            "quest": {
+                "needed": true,
+                "amount": 2,
+                "details": "Keep for Quests"
+            },
+            "upgrade": [
+                {
+                    "station": "Medical Lab",
+                    "level": 3,
+                    "amount": 8
+                }
+            ]
+        }
+    },
+    {
+        "id": "surveyor_vault",
+        "name": "Surveyor Vault",
+        "category": "Workshop Material",
+        "sell_price": 2000,
+        "recycle_value": 1680,
+        "roi_pct": -16,
+        "yields": "Data Drive",
+        "usage": {
+            "quest": {
+                "needed": true,
+                "amount": 1,
+                "details": "Keep for Quests"
+            },
+            "upgrade": [
+                {
+                    "station": "Medical Lab",
+                    "level": 3,
+                    "amount": 5
+                }
+            ]
+        }
+    },
+    {
+        "id": "pop_trigger",
+        "name": "Pop Trigger",
+        "category": "Workshop Material",
+        "sell_price": 640,
+        "recycle_value": 467,
+        "roi_pct": -27,
+        "yields": "Mechanical Components",
+        "usage": {
+            "quest": {
+                "needed": false,
+                "amount": 0
+            },
+            "upgrade": [
+                {
+                    "station": "Explosives Station",
+                    "level": 2,
+                    "amount": 5
+                }
+            ]
+        }
+    },
+    {
+        "id": "crude_explosives",
+        "name": "Crude Explosives",
+        "category": "Workshop Material",
+        "sell_price": 270,
+        "recycle_value": 151,
+        "roi_pct": -44,
+        "yields": "Chemicals",
+        "usage": {
+            "quest": {
+                "needed": false,
+                "amount": 0
+            },
+            "upgrade": [
+                {
+                    "station": "Explosives Station",
+                    "level": 2,
+                    "amount": 5
+                }
+            ]
+        }
+    },
+    {
+        "id": "synthesized_fuel",
+        "name": "Synthesized Fuel",
+        "category": "Workshop Material",
+        "sell_price": 700,
+        "recycle_value": 350,
+        "roi_pct": -50,
+        "yields": "Chemicals",
+        "usage": {
+            "quest": {
+                "needed": false,
+                "amount": 0
+            },
+            "upgrade": [
+                {
+                    "station": "Explosives Station",
+                    "level": 2,
+                    "amount": 3
+                }
+            ]
+        }
+    },
+    {
+        "id": "laboratory_reagents",
+        "name": "Laboratory Reagents",
+        "category": "Workshop Material",
+        "sell_price": 2000,
+        "recycle_value": 1600,
+        "roi_pct": -20,
+        "yields": "Chemicals",
+        "usage": {
+            "quest": {
+                "needed": false,
+                "amount": 0
+            },
+            "upgrade": [
+                {
+                    "station": "Explosives Station",
+                    "level": 3,
+                    "amount": 3
+                }
+            ]
+        }
+    },
+    {
+        "id": "explosive_compound",
+        "name": "Explosive Compound",
+        "category": "Workshop Material",
+        "sell_price": 1000,
+        "recycle_value": 540,
+        "roi_pct": -46,
+        "yields": "Chemicals",
+        "usage": {
+            "quest": {
+                "needed": false,
+                "amount": 0
+            },
+            "upgrade": [
+                {
+                    "station": "Explosives Station",
+                    "level": 3,
+                    "amount": 5
+                }
+            ]
+        },
+        "is_core": true
+    },
+    {
+        "id": "rocketeer_driver",
+        "name": "Rocketeer Driver",
+        "category": "Workshop Material",
+        "sell_price": 5000,
+        "recycle_value": 4100,
+        "roi_pct": -18,
+        "yields": "Explosive Compound",
+        "usage": {
+            "quest": {
+                "needed": true,
+                "amount": 1,
+                "details": "Keep for Quests"
+            },
+            "upgrade": [
+                {
+                    "station": "Explosives Station",
+                    "level": 3,
+                    "amount": 3
+                }
+            ]
+        }
+    },
+    {
+        "id": "fireball_burner",
+        "name": "Fireball Burner",
+        "category": "Workshop Material",
+        "sell_price": 640,
+        "recycle_value": 467,
+        "roi_pct": -27,
+        "yields": "Chemicals",
+        "usage": {
+            "quest": {
+                "needed": true,
+                "amount": 1,
+                "details": "Keep for Quests"
+            },
+            "upgrade": [
+                {
+                    "station": "Refiner",
+                    "level": 2,
+                    "amount": 8
+                }
+            ]
+        }
+    },
+    {
+        "id": "arc_motion_core",
+        "name": "ARC Motion Core",
+        "category": "Workshop Material",
+        "sell_price": 1000,
+        "recycle_value": 400,
+        "roi_pct": -60,
+        "yields": "Advanced Mechanical Components",
+        "recommendation": "SELL",
+        "usage": {
+            "quest": {
+                "needed": false,
+                "amount": 0
+            },
+            "upgrade": [
+                {
+                    "station": "Refiner",
+                    "level": 2,
+                    "amount": 5
+                }
+            ]
+        }
+    },
+    {
+        "id": "toaster",
+        "name": "Toaster",
+        "category": "Workshop Material",
+        "sell_price": 1000,
+        "recycle_value": 900,
+        "roi_pct": -10,
+        "yields": "Electrical Components",
+        "usage": {
+            "quest": {
+                "needed": false,
+                "amount": 0
+            },
+            "upgrade": [
+                {
+                    "station": "Refiner",
+                    "level": 2,
+                    "amount": 3
+                }
+            ]
+        }
+    },
+    {
+        "id": "motor",
+        "name": "Motor",
+        "category": "Workshop Material",
+        "sell_price": 2000,
+        "recycle_value": 1500,
+        "roi_pct": -25,
+        "yields": "Mechanical Components",
+        "usage": {
+            "quest": {
+                "needed": false,
+                "amount": 0
+            },
+            "upgrade": [
+                {
+                    "station": "Refiner",
+                    "level": 3,
+                    "amount": 3
+                }
+            ]
+        }
+    },
+    {
+        "id": "arc_circuitry",
+        "name": "ARC Circuitry",
+        "category": "Workshop Material",
+        "sell_price": 1000,
+        "recycle_value": 750,
+        "roi_pct": -25,
+        "yields": "Electrical Components",
+        "usage": {
+            "quest": {
+                "needed": false,
+                "amount": 0
+            },
+            "upgrade": [
+                {
+                    "station": "Refiner",
+                    "level": 3,
+                    "amount": 10
+                }
+            ]
+        }
+    },
+    {
+        "id": "bombardier_cell",
+        "name": "Bombardier Cell",
+        "category": "Workshop Material",
+        "sell_price": 5000,
+        "recycle_value": 3750,
+        "roi_pct": -25,
+        "yields": "Advanced Electrical Components",
+        "usage": {
+            "quest": {
+                "needed": false,
+                "amount": 0
+            },
+            "upgrade": [
+                {
+                    "station": "Refiner",
+                    "level": 3,
+                    "amount": 6
+                }
+            ]
+        }
+    },
+    {
+        "id": "snitch_scanner",
+        "name": "Snitch Scanner",
+        "category": "Workshop Material",
+        "sell_price": 2000,
+        "recycle_value": 1480,
+        "roi_pct": -26,
+        "yields": "Electrical Components",
+        "usage": {
+            "quest": {
+                "needed": true,
+                "amount": 2,
+                "details": "Keep for Quests"
+            },
+            "upgrade": [
+                {
+                    "station": "Utility Station",
+                    "level": 2,
+                    "amount": 6
+                }
+            ]
+        }
+    },
+    {
+        "id": "damaged_heat_sink",
+        "name": "Damaged Heat Sink",
+        "category": "Workshop Material",
+        "sell_price": 1000,
+        "recycle_value": 850,
+        "roi_pct": -15,
+        "yields": "Metal Parts",
+        "usage": {
+            "quest": {
+                "needed": false,
+                "amount": 0
+            },
+            "upgrade": [
+                {
+                    "station": "Utility Station",
+                    "level": 2,
+                    "amount": 2
+                }
+            ]
+        }
+    },
+    {
+        "id": "fried_motherboard",
+        "name": "Fried Motherboard",
+        "category": "Donor Item",
+        "sell_price": 2000,
+        "recycle_value": 1580,
+        "roi_pct": -21,
+        "yields": "Electrical Components (+2)",
+        "recommendation": "RECYCLE",
+        "usage": {
+            "quest": {
+                "needed": false,
+                "amount": 0
+            },
+            "upgrade": [
+                {
+                    "station": "Utility Station",
+                    "level": 3,
+                    "amount": 3
+                }
+            ]
+        }
+    },
+    {
+        "id": "leaper_pulse_unit",
+        "name": "Leaper Pulse Unit",
+        "category": "Quest Item",
+        "sell_price": 5000,
+        "recycle_value": 4100,
+        "roi_pct": -18,
+        "yields": "Advanced Mechanical Components (+2)",
+        "recommendation": "PRIORITY DONOR",
+        "notes": "Best source for Adv. Mechanical Components",
+        "usage": {
+            "quest": {
+                "needed": true,
+                "amount": 1,
+                "details": "Keep for Quests"
+            },
+            "upgrade": [
+                {
+                    "station": "Utility Station",
+                    "level": 3,
+                    "amount": 4
+                }
+            ]
+        }
+    },
+    {
+        "id": "dog_collar",
+        "name": "Dog Collar",
+        "category": "Scrappy Item",
+        "sell_price": 640,
+        "recycle_value": 473,
+        "roi_pct": -26,
+        "yields": "Leather",
+        "usage": {
+            "quest": {
+                "needed": false,
+                "amount": 0
+            },
+            "upgrade": [
+                {
+                    "station": "Scrappy",
+                    "level": 2,
+                    "amount": 1
+                }
+            ]
+        }
+    },
+    {
+        "id": "lemon",
+        "name": "Lemon",
+        "category": "Provisions",
+        "sell_price": 640,
+        "recycle_value": 480,
+        "roi_pct": -25,
+        "yields": "Organic Matter",
+        "usage": {
+            "quest": {
+                "needed": false,
+                "amount": 0
+            },
+            "upgrade": [
+                {
+                    "station": "Scrappy",
+                    "level": 3,
+                    "amount": 3
+                }
+            ]
+        }
+    },
+    {
+        "id": "apricot",
+        "name": "Apricot",
+        "category": "Provisions",
+        "sell_price": 640,
+        "recycle_value": 300,
+        "roi_pct": -53,
+        "yields": "Organic Matter",
+        "usage": {
+            "quest": {
+                "needed": false,
+                "amount": 0
+            },
+            "upgrade": [
+                {
+                    "station": "Scrappy",
+                    "level": 3,
+                    "amount": 3
+                },
+                {
+                    "station": "Scrappy",
+                    "level": 5,
+                    "amount": 12
+                }
+            ]
+        }
+    },
+    {
+        "id": "prickly_pear",
+        "name": "Prickly Pear",
+        "category": "Provisions",
+        "sell_price": 640,
+        "recycle_value": 300,
+        "roi_pct": -53,
+        "yields": "Organic Matter",
+        "usage": {
+            "quest": {
+                "needed": false,
+                "amount": 0
+            },
+            "upgrade": [
+                {
+                    "station": "Scrappy",
+                    "level": 4,
+                    "amount": 6
+                }
+            ]
+        }
+    },
+    {
+        "id": "olives",
+        "name": "Olives",
+        "category": "Provisions",
+        "sell_price": 640,
+        "recycle_value": 198,
+        "roi_pct": -69,
+        "yields": "Organic Matter",
+        "usage": {
+            "quest": {
+                "needed": false,
+                "amount": 0
+            },
+            "upgrade": [
+                {
+                    "station": "Scrappy",
+                    "level": 4,
+                    "amount": 6
+                }
+            ]
+        }
+    },
+    {
+        "id": "cat_bed",
+        "name": "Cat Bed",
+        "category": "Scrappy Item",
+        "sell_price": 1000,
+        "recycle_value": 750,
+        "roi_pct": -25,
+        "yields": "Fabric",
+        "usage": {
+            "quest": {
+                "needed": false,
+                "amount": 0
+            },
+            "upgrade": [
+                {
+                    "station": "Scrappy",
+                    "level": 5,
+                    "amount": 1
+                }
+            ]
+        }
+    },
+    {
+        "id": "mushroom",
+        "name": "Mushroom",
+        "category": "Provisions",
+        "sell_price": 1000,
+        "recycle_value": 750,
+        "roi_pct": -25,
+        "yields": "Organic Matter",
+        "usage": {
+            "quest": {
+                "needed": false,
+                "amount": 0
+            },
+            "upgrade": [
+                {
+                    "station": "Scrappy",
+                    "level": 5,
+                    "amount": 12
+                }
+            ]
+        }
+    },
+    {
+        "id": "very_comfortable_pillow",
+        "name": "Very Comfortable Pillow",
+        "category": "Scrappy Item",
+        "sell_price": 2000,
+        "recycle_value": 1500,
+        "roi_pct": -25,
+        "yields": "Fabric",
+        "usage": {
+            "quest": {
+                "needed": false,
+                "amount": 0
+            },
+            "upgrade": [
+                {
+                    "station": "Scrappy",
+                    "level": 5,
+                    "amount": 3
+                }
+            ]
+        }
+    },
+    {
+        "id": "magnetron",
+        "name": "Magnetron",
+        "category": "Quest Item",
+        "sell_price": 6000,
+        "recycle_value": 5820,
+        "roi_pct": -3,
+        "yields": "Advanced Electrical Components",
+        "usage": {
+            "quest": {
+                "needed": true,
+                "amount": 1,
+                "details": "Keep for Quests"
+            },
+            "upgrade": []
+        }
+    },
+    {
+        "id": "power_rod",
+        "name": "Power Rod",
+        "category": "Quest Item",
+        "sell_price": 5500,
+        "recycle_value": 2750,
+        "roi_pct": -50,
+        "yields": "Advanced Electrical Components",
+        "usage": {
+            "quest": {
+                "needed": true,
+                "amount": 1,
+                "details": "Keep for Quests"
+            },
+            "upgrade": []
+        }
+    },
+    {
+        "id": "water_pump",
+        "name": "Water Pump",
+        "category": "Quest Item",
+        "sell_price": 1000,
+        "recycle_value": 900,
+        "roi_pct": -10,
+        "yields": "Mechanical Components",
+        "usage": {
+            "quest": {
+                "needed": true,
+                "amount": 1,
+                "details": "Keep for Quests"
+            },
+            "upgrade": []
+        }
+    },
+    {
+        "id": "flow_controller",
+        "name": "Flow Controller",
+        "category": "Donor Item",
+        "sell_price": 3000,
+        "recycle_value": 2100,
+        "roi_pct": -30,
+        "yields": "Advanced Mechanical Components (+1)",
+        "recommendation": "PRIORITY DONOR",
+        "usage": {
+            "quest": {
+                "needed": true,
+                "amount": 1,
+                "details": "Keep for Quests"
+            },
+            "upgrade": []
+        }
+    },
+    {
+        "id": "syringe",
+        "name": "Syringe",
+        "category": "Quest Item",
+        "sell_price": 500,
+        "recycle_value": 280,
+        "roi_pct": -44,
+        "yields": "Plastic/Chemicals",
+        "usage": {
+            "quest": {
+                "needed": true,
+                "amount": 1,
+                "details": "Keep for Quests"
+            },
+            "upgrade": []
+        }
+    },
+    {
+        "id": "fertilizer",
+        "name": "Fertilizer",
+        "category": "Quest Item",
+        "sell_price": 1000,
+        "recycle_value": 200,
+        "roi_pct": -80,
+        "yields": "Chemicals",
+        "usage": {
+            "quest": {
+                "needed": true,
+                "amount": 1,
+                "details": "Keep for Quests"
+            },
+            "upgrade": []
+        }
+    },
+    {
+        "id": "great_mullein",
+        "name": "Great Mullein",
+        "category": "Plant",
+        "sell_price": 300,
+        "recycle_value": 399,
+        "roi_pct": 33,
+        "yields": "Organic Matter",
+        "recommendation": "RECYCLE",
+        "usage": {
+            "quest": {
+                "needed": true,
+                "amount": 1,
+                "details": "Keep for Quests"
+            },
+            "upgrade": []
+        }
+    },
+    {
+        "id": "battery",
+        "name": "Battery",
+        "category": "Resource",
+        "sell_price": 250,
+        "recycle_value": 150,
+        "roi_pct": -40,
+        "yields": "Chemicals",
+        "usage": {
+            "quest": {
+                "needed": true,
+                "amount": 3,
+                "details": "Keep for Quests"
+            },
+            "upgrade": []
+        },
+        "is_core": true
+    },
+    {
+        "id": "arc_alloy",
+        "name": "Arc Alloy",
+        "category": "Resource",
+        "sell_price": 200,
+        "recycle_value": 150,
+        "roi_pct": -25,
+        "yields": "Metal Parts",
+        "usage": {
+            "quest": {
+                "needed": true,
+                "amount": 3,
+                "details": "Keep for Quests"
+            },
+            "upgrade": []
+        }
+    },
+    {
+        "id": "wires",
+        "name": "Wires",
+        "category": "Resource",
+        "sell_price": 200,
+        "recycle_value": 100,
+        "roi_pct": -50,
+        "yields": "Electrical Components",
+        "usage": {
+            "quest": {
+                "needed": true,
+                "amount": 11,
+                "details": "Keep for Quests"
+            },
+            "upgrade": []
+        },
+        "is_core": true
+    },
+    {
+        "id": "burletta",
+        "name": "Burletta",
+        "category": "Quest Item",
+        "sell_price": 2900,
+        "recycle_value": 1015,
+        "roi_pct": -65,
+        "yields": "Data Drive",
+        "usage": {
+            "quest": {
+                "needed": true,
+                "amount": 1,
+                "details": "Keep for Quests"
+            },
+            "upgrade": []
+        }
+    },
+    {
+        "id": "cooling_fan",
+        "name": "Cooling Fan",
+        "category": "Donor Item",
+        "sell_price": 2000,
+        "recycle_value": 1640,
+        "roi_pct": -18,
+        "yields": "Electrical Components",
+        "recommendation": "SELL",
+        "usage": {
+            "quest": {
+                "needed": false,
+                "amount": 0
+            },
+            "upgrade": []
+        }
+    },
+    {
+        "id": "light_bulb",
+        "name": "Light Bulb",
+        "category": "Donor Item",
+        "sell_price": 2000,
+        "recycle_value": 1500,
+        "roi_pct": -25,
+        "yields": "Electrical Components",
+        "usage": {
+            "quest": {
+                "needed": false,
+                "amount": 0
+            },
+            "upgrade": []
+        }
+    },
+    {
+        "id": "sensors",
+        "name": "Sensors",
+        "category": "Donor Item",
+        "sell_price": 500,
+        "recycle_value": 275,
+        "roi_pct": -45,
+        "yields": "Electrical Components",
+        "usage": {
+            "quest": {
+                "needed": false,
+                "amount": 0
+            },
+            "upgrade": []
+        },
+        "is_core": true
+    },
+    {
+        "id": "exodus_modules",
+        "name": "Exodus Modules",
+        "category": "Donor Item",
+        "sell_price": 2750,
+        "recycle_value": 1595,
+        "roi_pct": -42,
+        "yields": "Advanced Electrical Components (+2)",
+        "recommendation": "RECYCLE",
+        "usage": {
+            "quest": {
+                "needed": false,
+                "amount": 0
+            },
+            "upgrade": []
+        }
+    },
+    {
+        "id": "magnetic_accelerator",
+        "name": "Magnetic Accelerator",
+        "category": "Donor Item",
+        "sell_price": 6000,
+        "recycle_value": 3000,
+        "roi_pct": -50,
+        "yields": "Advanced Electrical Components",
+        "recommendation": "PRIORITY DONOR",
+        "usage": {
+            "quest": {
+                "needed": false,
+                "amount": 0
+            },
+            "upgrade": []
+        }
+    },
+    {
+        "id": "shredder_gyro",
+        "name": "Shredder Gyro",
+        "category": "Donor Item",
+        "sell_price": 3000,
+        "recycle_value": 2520,
+        "roi_pct": -16,
+        "yields": "Advanced Mechanical Components (+2)",
+        "recommendation": "RECYCLE",
+        "usage": {
+            "quest": {
+                "needed": false,
+                "amount": 0
+            },
+            "upgrade": []
+        }
+    },
+    {
+        "id": "ion_sputter",
+        "name": "Ion Sputter",
+        "category": "Donor Item",
+        "sell_price": 3000,
+        "recycle_value": 2370,
+        "roi_pct": -21,
+        "yields": "Advanced Mechanical Components",
+        "usage": {
+            "quest": {
+                "needed": false,
+                "amount": 0
+            },
+            "upgrade": []
+        }
+    },
+    {
+        "id": "frequency_modulation_box",
+        "name": "Frequency Modulation Box",
+        "category": "Donor Item",
+        "sell_price": 3000,
+        "recycle_value": 2250,
+        "roi_pct": -25,
+        "yields": "Advanced Electrical Components (+1)",
+        "recommendation": "RECYCLE",
+        "usage": {
+            "quest": {
+                "needed": false,
+                "amount": 0
+            },
+            "upgrade": []
+        }
+    },
+    {
+        "id": "cooling_coil",
+        "name": "Cooling Coil",
+        "category": "Donor Item",
+        "sell_price": 1000,
+        "recycle_value": 900,
+        "roi_pct": -10,
+        "yields": "Steel Spring (+2) / Chemicals",
+        "recommendation": "RECYCLE",
+        "usage": {
+            "quest": {
+                "needed": false,
+                "amount": 0
+            },
+            "upgrade": []
+        }
+    },
+    {
+        "id": "processor",
+        "name": "Processor",
+        "category": "High Priority",
+        "sell_price": 500,
+        "recycle_value": 260,
+        "roi_pct": -48,
+        "yields": "Advanced Electrical Components",
+        "usage": {
+            "quest": {
+                "needed": false,
+                "amount": 0
+            },
+            "upgrade": []
+        },
+        "is_core": true
+    },
+    {
+        "id": "voltage_converter",
+        "name": "Voltage Converter",
+        "category": "High Priority",
+        "sell_price": 500,
+        "recycle_value": 250,
+        "roi_pct": -50,
+        "yields": "Advanced Electrical Components",
+        "usage": {
+            "quest": {
+                "needed": false,
+                "amount": 0
+            },
+            "upgrade": []
+        },
+        "is_core": true
+    },
+    {
+        "id": "steel_spring",
+        "name": "Steel Spring",
+        "category": "Material",
+        "sell_price": 300,
+        "recycle_value": 225,
+        "roi_pct": -25,
+        "yields": "Metal Parts",
+        "usage": {
+            "quest": {
+                "needed": false,
+                "amount": 0
+            },
+            "upgrade": []
+        },
+        "is_core": true
+    },
+    {
+        "id": "oil",
+        "name": "Oil",
+        "category": "Resource",
+        "sell_price": 300,
+        "recycle_value": 150,
+        "roi_pct": -50,
+        "yields": "Chemicals",
+        "usage": {
+            "quest": {
+                "needed": false,
+                "amount": 0
+            },
+            "upgrade": []
+        },
+        "is_core": true
+    },
+    {
+        "id": "duct_tape",
+        "name": "Duct Tape",
+        "category": "Resource",
+        "sell_price": 300,
+        "recycle_value": 150,
+        "roi_pct": -50,
+        "yields": "Adhesive",
+        "usage": {
+            "quest": {
+                "needed": false,
+                "amount": 0
+            },
+            "upgrade": []
+        },
+        "is_core": true
+    },
+    {
+        "id": "metal_parts",
+        "name": "Metal Parts",
+        "category": "Material",
+        "sell_price": 75,
+        "recycle_value": 56,
+        "roi_pct": -25,
+        "yields": "Scrap",
+        "usage": {
+            "quest": {
+                "needed": false,
+                "amount": 0
+            },
+            "upgrade": []
+        },
+        "is_core": true
+    },
+    {
+        "id": "rubber_parts",
+        "name": "Rubber Parts",
+        "category": "Material",
+        "sell_price": 50,
+        "recycle_value": 37,
+        "roi_pct": -25,
+        "yields": "Scrap",
+        "usage": {
+            "quest": {
+                "needed": false,
+                "amount": 0
+            },
+            "upgrade": []
+        },
+        "is_core": true
+    },
+    {
+        "id": "microscope",
+        "name": "Microscope",
+        "category": "Donor Item",
+        "sell_price": 3000,
+        "yields": "Advanced Mechanical Components (+1)",
+        "recommendation": "RECYCLE",
+        "usage": {
+            "quest": {
+                "needed": false,
+                "amount": 0
+            },
+            "upgrade": []
+        }
+    },
+    {
+        "id": "mini_centrifuge",
+        "name": "Mini Centrifuge",
+        "category": "Donor Item",
+        "sell_price": 3000,
+        "yields": "Advanced Mechanical Components (+1)",
+        "recommendation": "RECYCLE",
+        "usage": {
+            "quest": {
+                "needed": false,
+                "amount": 0
+            },
+            "upgrade": []
+        }
+    },
+    {
+        "id": "spectrometer",
+        "name": "Spectrometer",
+        "category": "Donor Item",
+        "sell_price": 3000,
+        "yields": "Advanced Electrical Components (+1)",
+        "recommendation": "RECYCLE",
+        "usage": {
+            "quest": {
+                "needed": false,
+                "amount": 0
+            },
+            "upgrade": []
+        }
+    },
+    {
+        "id": "telemetry_transceiver",
+        "name": "Telemetry Transceiver",
+        "category": "Donor Item",
+        "sell_price": 3000,
+        "yields": "Advanced Electrical Components (+1)",
+        "recommendation": "RECYCLE",
+        "usage": {
+            "quest": {
+                "needed": false,
+                "amount": 0
+            },
+            "upgrade": []
+        }
+    },
+    {
+        "id": "ice_cream_scooper",
+        "name": "Ice Cream Scooper",
+        "category": "Donor Item",
+        "sell_price": 640,
+        "yields": "Metal Parts (+8)",
+        "recommendation": "RECYCLE",
+        "usage": {
+            "quest": {
+                "needed": false,
+                "amount": 0
+            },
+            "upgrade": []
+        }
+    },
+    {
+        "id": "garlic_press",
+        "name": "Garlic Press",
+        "category": "Donor Item",
+        "sell_price": 640,
+        "yields": "Metal Parts (+7)",
+        "recommendation": "RECYCLE",
+        "usage": {
+            "quest": {
+                "needed": false,
+                "amount": 0
+            },
+            "upgrade": []
+        }
+    },
+    {
+        "id": "frying_pan",
+        "name": "Frying Pan",
+        "category": "Donor Item",
+        "sell_price": 640,
+        "yields": "Metal Parts (+12)",
+        "recommendation": "RECYCLE",
+        "usage": {
+            "quest": {
+                "needed": false,
+                "amount": 0
+            },
+            "upgrade": []
+        }
+    },
+    {
+        "id": "candle_holder",
+        "name": "Candle Holder",
+        "category": "Donor Item",
+        "sell_price": 640,
+        "yields": "Metal Parts (+8)",
+        "recommendation": "RECYCLE",
+        "usage": {
+            "quest": {
+                "needed": false,
+                "amount": 0
+            },
+            "upgrade": []
+        }
+    },
+    {
+        "id": "bicycle_pump",
+        "name": "Bicycle Pump",
+        "category": "Donor Item",
+        "sell_price": 1000,
+        "yields": "Metal Parts (+10)",
+        "recommendation": "RECYCLE",
+        "usage": {
+            "quest": {
+                "needed": false,
+                "amount": 0
+            },
+            "upgrade": []
+        }
+    },
+    {
+        "id": "arc_performance_steel",
+        "name": "ARC Performance Steel",
+        "category": "Donor Item",
+        "sell_price": 1000,
+        "yields": "Metal Parts (+7)",
+        "recommendation": "RECYCLE",
+        "usage": {
+            "quest": {
+                "needed": false,
+                "amount": 0
+            },
+            "upgrade": []
+        }
+    },
+    {
+        "id": "tattered_clothes",
+        "name": "Tattered Clothes",
+        "category": "Donor Item",
+        "sell_price": 640,
+        "yields": "Fabric (+11)",
+        "recommendation": "RECYCLE",
+        "usage": {
+            "quest": {
+                "needed": false,
+                "amount": 0
+            },
+            "upgrade": []
+        }
+    },
+    {
+        "id": "tattered_arc_lining",
+        "name": "Tattered ARC Lining",
+        "category": "Donor Item",
+        "sell_price": 640,
+        "yields": "Fabric (+12)",
+        "recommendation": "RECYCLE",
+        "usage": {
+            "quest": {
+                "needed": false,
+                "amount": 0
+            },
+            "upgrade": []
+        }
+    },
+    {
+        "id": "ruined_parachute",
+        "name": "Ruined Parachute",
+        "category": "Donor Item",
+        "sell_price": 1000,
+        "yields": "Fabric (+10)",
+        "recommendation": "RECYCLE",
+        "usage": {
+            "quest": {
+                "needed": false,
+                "amount": 0
+            },
+            "upgrade": []
+        }
+    },
+    {
+        "id": "torn_blanket",
+        "name": "Torn Blanket",
+        "category": "Donor Item",
+        "sell_price": 640,
+        "yields": "Fabric (+12)",
+        "recommendation": "RECYCLE",
+        "usage": {
+            "quest": {
+                "needed": false,
+                "amount": 0
+            },
+            "upgrade": []
+        }
+    },
+    {
+        "id": "arc_thermo_lining",
+        "name": "ARC Thermo Lining",
+        "category": "Donor Item",
+        "sell_price": 2000,
+        "yields": "Fabric (+28)",
+        "recommendation": "RECYCLE",
+        "usage": {
+            "quest": {
+                "needed": false,
+                "amount": 0
+            },
+            "upgrade": []
+        }
+    },
+    {
+        "id": "spring_cushion",
+        "name": "Spring Cushion",
+        "category": "Donor Item",
+        "sell_price": 1000,
+        "yields": "Fabric (+16) / Steel Spring (+1)",
+        "recommendation": "RECYCLE",
+        "usage": {
+            "quest": {
+                "needed": false,
+                "amount": 0
+            },
+            "upgrade": []
+        }
+    },
+    {
+        "id": "arc_flex_rubber",
+        "name": "ARC Flex Rubber",
+        "category": "Donor Item",
+        "sell_price": 1000,
+        "yields": "Rubber Parts (+16)",
+        "recommendation": "RECYCLE",
+        "usage": {
+            "quest": {
+                "needed": false,
+                "amount": 0
+            },
+            "upgrade": []
+        }
+    },
+    {
+        "id": "rubber_pad",
+        "name": "Rubber Pad",
+        "category": "Donor Item",
+        "sell_price": 1000,
+        "yields": "Rubber Parts (+18)",
+        "recommendation": "RECYCLE",
+        "usage": {
+            "quest": {
+                "needed": false,
+                "amount": 0
+            },
+            "upgrade": []
+        }
+    },
+    {
+        "id": "ruined_riot_shield",
+        "name": "Ruined Riot Shield",
+        "category": "Donor Item",
+        "sell_price": 1000,
+        "yields": "Plastic Parts (+10)",
+        "recommendation": "RECYCLE",
+        "usage": {
+            "quest": {
+                "needed": false,
+                "amount": 0
+            },
+            "upgrade": []
+        }
+    },
+    {
+        "id": "arc_synthetic_resin",
+        "name": "ARC Synthetic Resin",
+        "category": "Donor Item",
+        "sell_price": 1000,
+        "yields": "Plastic Parts (+14)",
+        "recommendation": "RECYCLE",
+        "usage": {
+            "quest": {
+                "needed": false,
+                "amount": 0
+            },
+            "upgrade": []
+        }
+    },
+    {
+        "id": "ruined_accordion",
+        "name": "Ruined Accordion",
+        "category": "Donor Item",
+        "sell_price": 2000,
+        "yields": "Steel Spring (+2)",
+        "recommendation": "RECYCLE",
+        "usage": {
+            "quest": {
+                "needed": false,
+                "amount": 0
+            },
+            "upgrade": []
+        }
+    },
+    {
+        "id": "rotary_encoder",
+        "name": "Rotary Encoder",
+        "category": "Donor Item",
+        "sell_price": 1000,
+        "yields": "Electrical Components (+2)",
+        "recommendation": "RECYCLE",
+        "usage": {
+            "quest": {
+                "needed": false,
+                "amount": 0
+            },
+            "upgrade": []
+        }
+    },
+    {
+        "id": "signal_amplifier",
+        "name": "Signal Amplifier",
+        "category": "Donor Item",
+        "sell_price": 3000,
+        "yields": "Electrical Components (+2)",
+        "recommendation": "RECYCLE",
+        "usage": {
+            "quest": {
+                "needed": false,
+                "amount": 0
+            },
+            "upgrade": []
+        }
+    },
+    {
+        "id": "turbo_pump",
+        "name": "Turbo Pump",
+        "category": "Donor Item",
+        "sell_price": 1000,
+        "yields": "Mechanical Components (+1)",
+        "recommendation": "RECYCLE",
+        "usage": {
+            "quest": {
+                "needed": false,
+                "amount": 0
+            },
+            "upgrade": []
+        }
+    },
+    {
+        "id": "broken_taser",
+        "name": "Broken Taser",
+        "category": "Donor Item",
+        "sell_price": 1000,
+        "yields": "Battery (+2)",
+        "recommendation": "RECYCLE",
+        "usage": {
+            "quest": {
+                "needed": false,
+                "amount": 0
+            },
+            "upgrade": []
+        }
+    },
+    {
+        "id": "geiger_counter",
+        "name": "Geiger Counter",
+        "category": "Donor Item",
+        "sell_price": 1000,
+        "yields": "Battery (+2)",
+        "recommendation": "RECYCLE",
+        "usage": {
+            "quest": {
+                "needed": false,
+                "amount": 0
+            },
+            "upgrade": []
+        }
+    },
+    {
+        "id": "broken_flashlight",
+        "name": "Broken Flashlight",
+        "category": "Donor Item",
+        "sell_price": 1000,
+        "yields": "Battery (+5)",
+        "recommendation": "RECYCLE",
+        "usage": {
+            "quest": {
+                "needed": false,
+                "amount": 0
+            },
+            "upgrade": []
+        }
+    },
+    {
+        "id": "power_bank",
+        "name": "Power Bank",
+        "category": "Donor Item",
+        "sell_price": 3500,
+        "yields": "Battery (+3)",
+        "recommendation": "RECYCLE",
+        "usage": {
+            "quest": {
+                "needed": false,
+                "amount": 0
+            },
+            "upgrade": []
+        }
+    },
+    {
+        "id": "portable_tv",
+        "name": "Portable TV",
+        "category": "Donor Item",
+        "sell_price": 2000,
+        "yields": "Battery (+2) / Wires (+6)",
+        "recommendation": "RECYCLE",
+        "usage": {
+            "quest": {
+                "needed": false,
+                "amount": 0
+            },
+            "upgrade": []
+        }
+    },
+    {
+        "id": "projector",
+        "name": "Projector",
+        "category": "Donor Item",
+        "sell_price": 2000,
+        "yields": "Wires (+6)",
+        "recommendation": "RECYCLE",
+        "usage": {
+            "quest": {
+                "needed": false,
+                "amount": 0
+            },
+            "upgrade": []
+        }
+    },
+    {
+        "id": "ripped_safety_vest",
+        "name": "Ripped Safety Vest",
+        "category": "Donor Item",
+        "sell_price": 1000,
+        "yields": "Exodus Modules (+1)",
+        "recommendation": "RECYCLE",
+        "usage": {
+            "quest": {
+                "needed": false,
+                "amount": 0
+            },
+            "upgrade": []
+        }
+    },
+    {
+        "id": "industrial_magnet",
+        "name": "Industrial Magnet",
+        "category": "Donor Item",
+        "sell_price": 1000,
+        "yields": "Magnet (+2)",
+        "recommendation": "RECYCLE",
+        "usage": {
+            "quest": {
+                "needed": false,
+                "amount": 0
+            },
+            "upgrade": []
+        }
+    }
+]
