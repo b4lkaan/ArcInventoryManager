@@ -56,7 +56,7 @@ export default function ItemCard({ item, onBack, completedUpgrades = new Set() }
 
                     {/* Quest Usage */}
                     <div className="usage-block">
-                        <h4>Quest Requirements</h4>
+                        <h4>Quest / Expedition Requirements</h4>
                         {item.usage?.quest?.needed ? (
                             <div className="usage-item critical">
                                 <span className="usage-icon">⛔</span>

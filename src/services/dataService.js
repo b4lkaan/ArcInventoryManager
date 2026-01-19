@@ -72,13 +72,18 @@ export const getRecommendation = (item, completedUpgrades = new Set()) => {
 
   // 1. Quest Priority - CRITICAL
   if (item.usage?.quest?.needed) {
+    // Check if it's an Expedition requirement
+    const isExpedition = item.usage.quest.details?.toLowerCase().includes('expedition');
+    const label = isExpedition ? 'EXPEDITION' : 'DO NOT SELL';
+    const reasonPrefix = isExpedition ? 'Required for Expedition' : 'Required for Quest';
+
     return {
       type: 'CRITICAL',
-      label: 'DO NOT SELL',
+      label: label,
       icon: '⛔',
       color: '#dc2626',
       bgColor: 'rgba(220, 38, 38, 0.15)',
-      reason: `Required for Quest: ${item.usage.quest.details}`,
+      reason: `${reasonPrefix}: ${item.usage.quest.details}`,
       subtext: `Keep at least ${item.usage.quest.amount}`
     };
   }

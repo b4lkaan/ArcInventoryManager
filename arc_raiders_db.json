@@ -40,7 +40,7 @@
         "sell_price": 2000,
         "recycle_value": 1900,
         "roi_pct": -5,
-        "yields": "Electrical Components (+4)",
+        "yields": "Wires (+4)",
         "recommendation": "SELL",
         "notes": "Listed as High Priority Donor for Wires on Page 3",
         "usage": {
@@ -546,6 +546,23 @@
         }
     },
     {
+        "id": "humidifier",
+        "name": "Humidifier",
+        "category": "Expedition Item",
+        "sell_price": 1000,
+        "recycle_value": 1000,
+        "roi_pct": 0,
+        "yields": "Scrap",
+        "usage": {
+            "quest": {
+                "needed": true,
+                "amount": 5,
+                "details": "Expedition Project 1 (Phase 3)"
+            },
+            "upgrade": []
+        }
+    },
+    {
         "id": "mechanical_components",
         "name": "Mechanical Components",
         "category": "Material",
@@ -586,7 +603,7 @@
                 {
                     "station": "Gunsmith",
                     "level": 2,
-                    "amount": 3
+                    "amount": 5
                 }
             ]
         }
@@ -602,8 +619,8 @@
         "usage": {
             "quest": {
                 "needed": true,
-                "amount": 2,
-                "details": "Keep for Quests"
+                "amount": 1,
+                "details": "Keep for Quests (x1)"
             },
             "upgrade": [
                 {
@@ -693,8 +710,9 @@
         "yields": "Scrap",
         "usage": {
             "quest": {
-                "needed": false,
-                "amount": 0
+                "needed": true,
+                "amount": 20,
+                "details": "Expedition Project 1 (Phase 2)"
             },
             "upgrade": [
                 {
@@ -718,7 +736,7 @@
         "sell_price": 1000,
         "recycle_value": 800,
         "roi_pct": -20,
-        "yields": "Wires (+2)",
+        "yields": "Wires (+6)",
         "recommendation": "RECYCLE",
         "usage": {
             "quest": {
@@ -729,7 +747,7 @@
                 {
                     "station": "Gear Bench",
                     "level": 2,
-                    "amount": 3
+                    "amount": 5
                 }
             ]
         }
@@ -747,7 +765,7 @@
             "quest": {
                 "needed": true,
                 "amount": 2,
-                "details": "Keep for Quests"
+                "details": "Keep for Quests (x2)"
             },
             "upgrade": [
                 {
@@ -790,8 +808,9 @@
         "yields": "Scrap",
         "usage": {
             "quest": {
-                "needed": false,
-                "amount": 0
+                "needed": true,
+                "amount": 5,
+                "details": "Expedition Project 1 (Phase 4)"
             },
             "upgrade": [
                 {
@@ -863,8 +882,8 @@
         "usage": {
             "quest": {
                 "needed": true,
-                "amount": 1,
-                "details": "Keep for Quests"
+                "amount": 36,
+                "details": "Keep for Quests (x1) + Expedition Project (x35)"
             },
             "upgrade": [
                 {
@@ -1316,8 +1335,8 @@
         "usage": {
             "quest": {
                 "needed": true,
-                "amount": 1,
-                "details": "Keep for Quests"
+                "amount": 4,
+                "details": "Keep for Quests (x1) + Expedition Project (x3)"
             },
             "upgrade": [
                 {
@@ -1641,8 +1660,8 @@
         "usage": {
             "quest": {
                 "needed": true,
-                "amount": 3,
-                "details": "Keep for Quests"
+                "amount": 33,
+                "details": "Keep for Quests (x3) + Expedition Project (x30)"
             },
             "upgrade": []
         },
@@ -1659,8 +1678,8 @@
         "usage": {
             "quest": {
                 "needed": true,
-                "amount": 3,
-                "details": "Keep for Quests"
+                "amount": 83,
+                "details": "Keep for Quests (x3) + Expedition Project (x80)"
             },
             "upgrade": []
         }
@@ -1676,8 +1695,8 @@
         "usage": {
             "quest": {
                 "needed": true,
-                "amount": 11,
-                "details": "Keep for Quests"
+                "amount": 36,
+                "details": "Keep for Quests (x11) + Expedition Project (x25)"
             },
             "upgrade": []
         },
@@ -1711,8 +1730,9 @@
         "recommendation": "SELL",
         "usage": {
             "quest": {
-                "needed": false,
-                "amount": 0
+                "needed": true,
+                "amount": 5,
+                "details": "Expedition Project 1 (Phase 2)"
             },
             "upgrade": []
         }
@@ -1727,8 +1747,9 @@
         "yields": "Electrical Components",
         "usage": {
             "quest": {
-                "needed": false,
-                "amount": 0
+                "needed": true,
+                "amount": 5,
+                "details": "Expedition Project 1 (Phase 3)"
             },
             "upgrade": []
         }
@@ -1743,8 +1764,9 @@
         "yields": "Electrical Components",
         "usage": {
             "quest": {
-                "needed": false,
-                "amount": 0
+                "needed": true,
+                "amount": 20,
+                "details": "Expedition Project 1 (Phase 2)"
             },
             "upgrade": []
         },
@@ -1761,8 +1783,9 @@
         "recommendation": "RECYCLE",
         "usage": {
             "quest": {
-                "needed": false,
-                "amount": 0
+                "needed": true,
+                "amount": 1,
+                "details": "Expedition Project 1 (Phase 3)"
             },
             "upgrade": []
         }
@@ -1778,8 +1801,9 @@
         "recommendation": "PRIORITY DONOR",
         "usage": {
             "quest": {
-                "needed": false,
-                "amount": 0
+                "needed": true,
+                "amount": 3,
+                "details": "Expedition Project 1 (Phase 4)"
             },
             "upgrade": []
         }
@@ -1841,12 +1865,13 @@
         "sell_price": 1000,
         "recycle_value": 900,
         "roi_pct": -10,
-        "yields": "Steel Spring (+2) / Chemicals",
+        "yields": "Steel Spring (+2) / Chemicals (+16)",
         "recommendation": "RECYCLE",
         "usage": {
             "quest": {
-                "needed": false,
-                "amount": 0
+                "needed": true,
+                "amount": 4,
+                "details": "Expedition Project 1 (Phase 2)"
             },
             "upgrade": []
         }
@@ -1895,8 +1920,9 @@
         "yields": "Metal Parts",
         "usage": {
             "quest": {
-                "needed": false,
-                "amount": 0
+                "needed": true,
+                "amount": 15,
+                "details": "Expedition Project 1 (Phase 1)"
             },
             "upgrade": []
         },
@@ -1946,8 +1972,9 @@
         "yields": "Scrap",
         "usage": {
             "quest": {
-                "needed": false,
-                "amount": 0
+                "needed": true,
+                "amount": 150,
+                "details": "Expedition Project 1 (Phase 1)"
             },
             "upgrade": []
         },
@@ -1963,8 +1990,9 @@
         "yields": "Scrap",
         "usage": {
             "quest": {
-                "needed": false,
-                "amount": 0
+                "needed": true,
+                "amount": 200,
+                "details": "Expedition Project 1 (Phase 1)"
             },
             "upgrade": []
         },
@@ -2441,6 +2469,107 @@
         "category": "Donor Item",
         "sell_price": 1000,
         "yields": "Magnet (+2)",
+        "recommendation": "RECYCLE",
+        "usage": {
+            "quest": {
+                "needed": false,
+                "amount": 0
+            },
+            "upgrade": []
+        }
+    },
+    {
+        "id": "magnet",
+        "name": "Magnet",
+        "category": "Material",
+        "sell_price": 330,
+        "recycle_value": 0,
+        "roi_pct": 0,
+        "yields": "Scrap",
+        "usage": {
+            "quest": {
+                "needed": false,
+                "amount": 0
+            },
+            "upgrade": []
+        },
+        "is_core": true
+    },
+    {
+        "id": "plastic_parts",
+        "name": "Plastic Parts",
+        "category": "Material",
+        "sell_price": 60,
+        "recycle_value": 44,
+        "roi_pct": -26,
+        "yields": "Scrap",
+        "usage": {
+            "quest": {
+                "needed": false,
+                "amount": 0
+            },
+            "upgrade": []
+        },
+        "is_core": true
+    },
+    {
+        "id": "chemicals",
+        "name": "Chemicals",
+        "category": "Material",
+        "sell_price": 50,
+        "recycle_value": 16,
+        "roi_pct": -67,
+        "yields": "Scrap",
+        "usage": {
+            "quest": {
+                "needed": false,
+                "amount": 0
+            },
+            "upgrade": []
+        },
+        "is_core": true
+    },
+    {
+        "id": "surge_shield_recharger",
+        "name": "Surge Shield Recharger",
+        "category": "Donor Item",
+        "sell_price": 1200,
+        "recycle_value": 0,
+        "roi_pct": 0,
+        "yields": "Advanced Electrical Components",
+        "recommendation": "RECYCLE",
+        "usage": {
+            "quest": {
+                "needed": false,
+                "amount": 0
+            },
+            "upgrade": []
+        }
+    },
+    {
+        "id": "mod_components",
+        "name": "Mod Components",
+        "category": "Material",
+        "sell_price": 3000,
+        "recycle_value": 0,
+        "roi_pct": 0,
+        "yields": "Advanced Mechanical Components",
+        "usage": {
+            "quest": {
+                "needed": false,
+                "amount": 0
+            },
+            "upgrade": []
+        }
+    },
+    {
+        "id": "extended_mags",
+        "name": "Extended Mags (I, II, III)",
+        "category": "Donor Item",
+        "sell_price": 640,
+        "recycle_value": 0,
+        "roi_pct": 0,
+        "yields": "Steel Spring",
         "recommendation": "RECYCLE",
         "usage": {
             "quest": {
