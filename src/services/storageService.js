@@ -122,8 +122,8 @@ export const storageService = {
                     amount: r.quantity || 1
                 }));
 
-                // Extract requirements from requirementItemIds if present
-                const requirements = (rawQuest.requirementItemIds || []).map(r => ({
+                // Extract requirements from requiredItemIds (GitHub field name)
+                const requirements = (rawQuest.requiredItemIds || []).map(r => ({
                     id: r.itemId,
                     name: r.itemId?.split('_').map(w => w.charAt(0).toUpperCase() + w.slice(1)).join(' ') || '',
                     amount: r.quantity || 1
