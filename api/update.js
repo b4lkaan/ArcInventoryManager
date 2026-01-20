@@ -94,7 +94,7 @@ const fetchFolder = async (url, label) => {
 
 export default async function handler(request, response) {
     // 1. Security Check
-    const authHeader = request.headers.get('authorization');
+    const authHeader = request.headers['authorization'];
     if (authHeader !== `Bearer ${process.env.CRON_SECRET}`) {
         return response.status(401).json({ error: 'Unauthorized' });
     }
