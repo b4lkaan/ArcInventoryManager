@@ -64,7 +64,7 @@ const fetchFolder = async (url) => {
 
 export default async function handler(request, response) {
     // Security Check
-    const authHeader = request.headers.get('authorization');
+    const authHeader = request.headers['authorization']; // Fixed: Use bracket notation for Node.js
     if (authHeader !== `Bearer ${process.env.CRON_SECRET}`) {
         return response.status(401).json({ error: 'Unauthorized' });
     }
@@ -128,8 +128,11 @@ export default async function handler(request, response) {
         const upgradesObj = { station_upgrades: {}, expedition_requirements: {} };
         rawHideout.forEach(station => {
             const stationId = station.id || 'unknown';
-            const levelsObj = {};
 
+            // Normalize levels to array if single object, or keep as array
+            // GitHub data seems to use 'levels' array.
+
+            const levelsObj = {};
             if (Array.isArray(station.levels)) {
                 station.levels.forEach(levelData => {
                     const levelKey = `level_${levelData.level}`;
@@ -161,7 +164,8 @@ export default async function handler(request, response) {
         const blob = await put('arc_raiders_db.json', JSON.stringify(fullDatabase), {
             access: 'public',
             addRandomSuffix: false, // Keeps the URL constant!
-            token: process.env.BLOB_READ_WRITE_TOKEN
+            token: process.env.BLOB_READ_WRITE_TOKEN,
+            allowOverwrite: true // Fixed: Required to update existing file
         });
 
         return response.status(200).json({
