@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { getAllQuestsWithSteps, getAllExpeditions } from '../services/dataService';
+import { getAllQuestsWithSteps, getAllExpeditions, getAllUpgrades } from '../services/dataService';
 import { userProgressService } from '../services/userProgressService';
 import './QuestTracker.css';
 
@@ -9,17 +9,41 @@ const QuestTracker = ({
     completedQuests,
     onUpdate,
     trackedQuests,
-    onToggleTrack
+    onToggleTrack,
+    completedUpgrades,
+    onUpdateUpgrades
 }) => {
     const [activeTab, setActiveTab] = useState('quests');
 
     // Use enriched quests with steps
     const [quests] = useState(() => getAllQuestsWithSteps());
     const [expeditions] = useState(() => getAllExpeditions());
+    const [upgrades] = useState(() => {
+        // Group upgrades by station for display
+        const allUpgrades = getAllUpgrades();
+        const grouped = allUpgrades.reduce((acc, u) => {
+            if (!acc[u.station]) acc[u.station] = [];
+            acc[u.station].push(u);
+            return acc;
+        }, {});
+
+        // Sort levels
+        Object.keys(grouped).forEach(station => {
+            grouped[station].sort((a, b) => a.level - b.level);
+        });
+        return grouped;
+    });
 
     const toggleQuest = (questName, isChecked) => {
         const updated = userProgressService.toggleQuest(questName, isChecked);
         onUpdate(new Set(updated));
+    };
+
+    const toggleUpgrade = (station, level, isChecked) => {
+        const updated = userProgressService.toggleUpgrade(station, level, isChecked);
+        if (onUpdateUpgrades) {
+            onUpdateUpgrades(new Set(updated));
+        }
     };
 
     if (!isOpen) return null;
@@ -28,7 +52,7 @@ const QuestTracker = ({
         <div className="quest-tracker-overlay" onClick={onClose}>
             <div className="quest-tracker-modal" onClick={e => e.stopPropagation()}>
                 <div className="quest-tracker-header">
-                    <h2>Quest & Expedition Progress</h2>
+                    <h2>Progression Tracker</h2>
                     <button className="close-btn" onClick={onClose}>&times;</button>
                 </div>
 
@@ -45,11 +69,17 @@ const QuestTracker = ({
                     >
                         📦 Expeditions ({expeditions.length})
                     </button>
+                    <button
+                        className={`tab-btn ${activeTab === 'upgrades' ? 'active' : ''}`}
+                        onClick={() => setActiveTab('upgrades')}
+                    >
+                        🛠️ Upgrades
+                    </button>
                 </div>
 
                 <div className="quest-tracker-content">
                     <p className="tracker-info">
-                        Mark completed quests to hide requirements. Pin quests to track them in sidebar.
+                        Mark completed items to remove them from recommendations. Pin active quests to the sidebar.
                     </p>
 
                     {activeTab === 'quests' && (
@@ -135,6 +165,32 @@ const QuestTracker = ({
                                     </label>
                                 );
                             })}
+                        </div>
+                    )}
+
+                    {activeTab === 'upgrades' && (
+                        <div className="stations-grid">
+                            {Object.entries(upgrades).map(([station, levels]) => (
+                                <div key={station} className="station-card">
+                                    <h3>{station}</h3>
+                                    <div className="levels-list">
+                                        {levels.map(u => {
+                                            const isDone = completedUpgrades?.has(`${u.station}-${u.level}`);
+                                            return (
+                                                <label key={u.level} className={`level-item ${isDone ? 'completed' : ''}`}>
+                                                    <input
+                                                        type="checkbox"
+                                                        checked={isDone}
+                                                        onChange={(e) => toggleUpgrade(u.station, u.level, e.target.checked)}
+                                                    />
+                                                    <span className="level-label">Level {u.level}</span>
+                                                    {isDone && <span className="status-tag">DONE</span>}
+                                                </label>
+                                            );
+                                        })}
+                                    </div>
+                                </div>
+                            ))}
                         </div>
                     )}
                 </div>
