@@ -1,12 +1,20 @@
 import React, { useState } from 'react';
-import { getAllQuests, getAllExpeditions } from '../services/dataService';
+import { getAllQuestsWithSteps, getAllExpeditions } from '../services/dataService';
 import { userProgressService } from '../services/userProgressService';
 import './QuestTracker.css';
 
-const QuestTracker = ({ isOpen, onClose, completedQuests, onUpdate }) => {
+const QuestTracker = ({
+    isOpen,
+    onClose,
+    completedQuests,
+    onUpdate,
+    trackedQuests,
+    onToggleTrack
+}) => {
     const [activeTab, setActiveTab] = useState('quests');
 
-    const [quests] = useState(() => getAllQuests());
+    // Use enriched quests with steps
+    const [quests] = useState(() => getAllQuestsWithSteps());
     const [expeditions] = useState(() => getAllExpeditions());
 
     const toggleQuest = (questName, isChecked) => {
@@ -41,28 +49,66 @@ const QuestTracker = ({ isOpen, onClose, completedQuests, onUpdate }) => {
 
                 <div className="quest-tracker-content">
                     <p className="tracker-info">
-                        Mark completed quests/expeditions to remove their item requirements from recommendations.
+                        Mark completed quests to hide requirements. Pin quests to track them in sidebar.
                     </p>
 
                     {activeTab === 'quests' && (
                         <div className="quests-list">
                             {quests.map(quest => {
                                 const isDone = completedQuests.has(quest.quest_name);
+                                const isTracked = trackedQuests?.has(quest.quest_name);
+
                                 return (
-                                    <label key={quest.quest_name} className={`quest-item ${isDone ? 'completed' : ''}`}>
-                                        <input
-                                            type="checkbox"
-                                            checked={isDone}
-                                            onChange={(e) => toggleQuest(quest.quest_name, e.target.checked)}
-                                        />
-                                        <div className="quest-info">
-                                            <span className="quest-name">{quest.quest_name}</span>
-                                            <span className="quest-requirements">
-                                                {quest.requirements.map(r => `${r.name} x${r.amount}`).join(', ')}
-                                            </span>
+                                    <div key={quest.quest_name} className={`quest-item ${isDone ? 'completed' : ''}`}>
+                                        <div className="quest-header-row">
+                                            <label className="quest-main-check">
+                                                <input
+                                                    type="checkbox"
+                                                    checked={isDone}
+                                                    onChange={(e) => toggleQuest(quest.quest_name, e.target.checked)}
+                                                />
+                                                <span className="quest-name">{quest.quest_name}</span>
+                                            </label>
+
+                                            <div className="quest-actions">
+                                                {isDone ? (
+                                                    <span className="status-tag">DONE</span>
+                                                ) : (
+                                                    <button
+                                                        className={`track-btn ${isTracked ? 'active' : ''}`}
+                                                        onClick={(e) => {
+                                                            e.stopPropagation();
+                                                            onToggleTrack(quest.quest_name, !isTracked);
+                                                        }}
+                                                        title={isTracked ? "Stop Tracking" : "Track in Sidebar"}
+                                                    >
+                                                        {isTracked ? '📌 Pinned' : '📌 Pin'}
+                                                    </button>
+                                                )}
+                                            </div>
                                         </div>
-                                        {isDone && <span className="status-tag">DONE</span>}
-                                    </label>
+
+                                        <div className="quest-details">
+                                            {quest.steps.length > 0 && (
+                                                <ul className="quest-steps-list">
+                                                    {quest.steps.map((step, idx) => (
+                                                        <li key={idx}>• {step}</li>
+                                                    ))}
+                                                </ul>
+                                            )}
+
+                                            {quest.requirements && quest.requirements.length > 0 && (
+                                                <div className="quest-requirements-tags">
+                                                    <span className="req-label">Needs: </span>
+                                                    {quest.requirements.map((r, i) => (
+                                                        <span key={i} className="req-pill">
+                                                            {r.name} x{r.amount}
+                                                        </span>
+                                                    ))}
+                                                </div>
+                                            )}
+                                        </div>
+                                    </div>
                                 );
                             })}
                         </div>

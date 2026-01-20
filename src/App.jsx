@@ -4,7 +4,8 @@ import SearchResults from './components/SearchResults';
 import ItemCard from './components/ItemCard';
 import UpgradeTracker from './components/UpgradeTracker';
 import QuestTracker from './components/QuestTracker';
-import { findItem } from './services/dataService';
+import ActiveQuestSidebar from './components/ActiveQuestSidebar';
+import { findItem, getAllQuestsWithSteps } from './services/dataService';
 import { userProgressService } from './services/userProgressService';
 import './App.css';
 
@@ -14,12 +15,21 @@ function App() {
   const [query, setQuery] = useState('');
   const [isTrackerOpen, setIsTrackerOpen] = useState(false);
   const [isQuestTrackerOpen, setIsQuestTrackerOpen] = useState(false);
+
+  // Sidebar state
+  const [isSidebarOpen, setIsSidebarOpen] = useState(true);
+
   const [completedUpgrades, setCompletedUpgrades] = useState(() =>
     userProgressService.getCompletedUpgrades()
   );
   const [completedQuests, setCompletedQuests] = useState(() =>
     userProgressService.getCompletedQuests()
   );
+  const [trackedQuests, setTrackedQuests] = useState(() =>
+    userProgressService.getTrackedQuests()
+  );
+
+  const [allQuests] = useState(() => getAllQuestsWithSteps());
 
   const handleSearch = useCallback((searchQuery) => {
     setQuery(searchQuery);
@@ -50,6 +60,12 @@ function App() {
 
   const handleBack = useCallback(() => {
     setSelectedItem(null);
+  }, []);
+
+  const handleToggleTrackQuest = useCallback((questName, isTracked) => {
+    const updated = userProgressService.toggleTrackedQuest(questName, isTracked);
+    setTrackedQuests(new Set(updated));
+    if (isTracked) setIsSidebarOpen(true);
   }, []);
 
   return (
@@ -119,6 +135,16 @@ function App() {
         onClose={() => setIsQuestTrackerOpen(false)}
         completedQuests={completedQuests}
         onUpdate={setCompletedQuests}
+        trackedQuests={trackedQuests}
+        onToggleTrack={handleToggleTrackQuest}
+      />
+
+      <ActiveQuestSidebar
+        isOpen={isSidebarOpen}
+        onClose={() => setIsSidebarOpen(!isSidebarOpen)}
+        trackedQuests={trackedQuests}
+        allQuests={allQuests}
+        onRemove={(name) => handleToggleTrackQuest(name, false)}
       />
 
       <footer className="app-footer">

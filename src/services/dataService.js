@@ -89,8 +89,20 @@ const getEnrichedItems = () => {
  * Get all quests from the quest database
  * @returns {Array} All quests with their requirements
  */
+/**
+ * Get all quests from the quest database, including those without item requirements
+ * @returns {Array} All quests with their steps and requirements
+ */
 export const getAllQuests = () => {
-  return questsDb.filter(quest => quest.requirements && quest.requirements.length > 0);
+  return questsDb;
+};
+
+/**
+ * Get all quests with full details
+ * @returns {Array} List of all quests
+ */
+export const getAllQuestsWithSteps = () => {
+  return questsDb;
 };
 
 /**

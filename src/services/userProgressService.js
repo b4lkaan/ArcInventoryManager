@@ -106,5 +106,57 @@ export const userProgressService = {
     isQuestComplete: (questName) => {
         const completed = userProgressService.getCompletedQuests();
         return completed.has(questName);
+    },
+
+    /**
+     * Get all actively tracked quests
+     * @returns {Set<string>} Set of quest names
+     */
+    getTrackedQuests: () => {
+        try {
+            const stored = localStorage.getItem('arc_raiders_tracked_quests_v1');
+            if (!stored) return new Set();
+            const parsed = JSON.parse(stored);
+            return new Set(parsed.trackedQuests || []);
+        } catch (e) {
+            console.error('Failed to load tracked quests', e);
+            return new Set();
+        }
+    },
+
+    /**
+     * Toggle tracking status of a quest
+     * @param {string} questName 
+     * @param {boolean} isTracked 
+     * @returns {Set<string>} Updated set of tracked quests
+     */
+    toggleTrackedQuest: (questName, isTracked) => {
+        const current = userProgressService.getTrackedQuests();
+
+        if (isTracked) {
+            current.add(questName);
+        } else {
+            current.delete(questName);
+        }
+
+        try {
+            localStorage.setItem('arc_raiders_tracked_quests_v1', JSON.stringify({
+                trackedQuests: Array.from(current)
+            }));
+        } catch (e) {
+            console.error('Failed to save tracked quests', e);
+        }
+
+        return current;
+    },
+
+    /**
+     * Check if a quest is being tracked
+     * @param {string} questName 
+     * @returns {boolean}
+     */
+    isQuestTracked: (questName) => {
+        const tracked = userProgressService.getTrackedQuests();
+        return tracked.has(questName);
     }
 };
