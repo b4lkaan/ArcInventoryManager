@@ -1,4 +1,5 @@
 import { storageService } from './storageService';
+import { getLocalizedValue } from '../utils/localization';
 import localUpgradesData from '../../arc_raiders_upgrades.json';
 
 // Dynamic Storage Variables
@@ -150,15 +151,23 @@ export const getAllExpeditions = () => {
 
 /**
  * Search for items by name (case-insensitive partial match)
+ * Searches across all language values in the localized name object
  * @param {string} query - Search query
  * @returns {Array} Matching items
  */
 export const findItem = (query) => {
   if (!query || query.trim() === '') return [];
   const lowerQuery = query.toLowerCase().trim();
-  return getEnrichedItems().filter(item =>
-    item.name.toLowerCase().includes(lowerQuery)
-  );
+  return getEnrichedItems().filter(item => {
+    // If name is an object (localized), search all language values
+    if (item.name && typeof item.name === 'object') {
+      return Object.values(item.name).some(value =>
+        typeof value === 'string' && value.toLowerCase().includes(lowerQuery)
+      );
+    }
+    // Fallback for string names
+    return typeof item.name === 'string' && item.name.toLowerCase().includes(lowerQuery);
+  });
 };
 
 /**
