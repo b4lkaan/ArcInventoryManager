@@ -36,9 +36,19 @@ export default function SearchResults({ results, onSelect, query }) {
                             className="result-item"
                             onClick={() => onSelect(item)}
                         >
-                            <div className="result-info">
-                                <span className="result-name">{item.name}</span>
-                                <span className="result-category">{item.category}</span>
+                            <div className="result-left">
+                                {item.image && (
+                                    <img
+                                        src={item.image}
+                                        alt={item.name}
+                                        className="result-image"
+                                        loading="lazy"
+                                    />
+                                )}
+                                <div className="result-info">
+                                    <span className="result-name">{item.name}</span>
+                                    <span className="result-category">{item.category}</span>
+                                </div>
                             </div>
                             <div
                                 className="result-badge"

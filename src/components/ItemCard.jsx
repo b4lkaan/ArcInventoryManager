@@ -13,6 +13,13 @@ export default function ItemCard({ item, onBack, completedUpgrades = new Set(), 
                     ← Back to Search
                 </button>
                 <div className="item-title">
+                    {item.image && (
+                        <img
+                            src={item.image}
+                            alt={item.name}
+                            className="item-header-image"
+                        />
+                    )}
                     <h1>{item.name}</h1>
                     <span className="category-badge">{item.category}</span>
                 </div>
