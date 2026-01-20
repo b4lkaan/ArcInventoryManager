@@ -32,7 +32,7 @@ function App() {
     userProgressService.getTrackedQuests()
   );
 
-  const [allQuests] = useState(() => getAllQuestsWithSteps());
+  const [allQuests, setAllQuests] = useState(() => getAllQuestsWithSteps());
 
   // NEW: Update Handler
   const handleUpdateDb = useCallback(async () => {
@@ -45,6 +45,7 @@ function App() {
       });
 
       reloadData(); // Tell dataService to pick up new data
+      setAllQuests(getAllQuestsWithSteps()); // Refresh quest list for sidebar
       setIsInitializing(false);
     } catch (err) {
       alert("Failed to update database: " + err.message);

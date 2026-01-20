@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useMemo } from 'react';
 import { getAllQuestsWithSteps, getAllExpeditions, getAllUpgrades } from '../services/dataService';
 import { userProgressService } from '../services/userProgressService';
 import './QuestTracker.css';
@@ -15,10 +15,11 @@ const QuestTracker = ({
 }) => {
     const [activeTab, setActiveTab] = useState('quests');
 
-    // Use enriched quests with steps
-    const [quests] = useState(() => getAllQuestsWithSteps());
-    const [expeditions] = useState(() => getAllExpeditions());
-    const [upgrades] = useState(() => {
+    // Fetch data fresh each time the modal opens (useMemo recalculates when isOpen changes)
+    const quests = useMemo(() => isOpen ? getAllQuestsWithSteps() : [], [isOpen]);
+    const expeditions = useMemo(() => isOpen ? getAllExpeditions() : [], [isOpen]);
+    const upgrades = useMemo(() => {
+        if (!isOpen) return {};
         // Group upgrades by station for display
         const allUpgrades = getAllUpgrades();
         const grouped = allUpgrades.reduce((acc, u) => {
@@ -32,7 +33,7 @@ const QuestTracker = ({
             grouped[station].sort((a, b) => a.level - b.level);
         });
         return grouped;
-    });
+    }, [isOpen]);
 
     const toggleQuest = (questName, isChecked) => {
         const updated = userProgressService.toggleQuest(questName, isChecked);

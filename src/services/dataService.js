@@ -1,26 +1,27 @@
-import questsDb from '../../arc_raiders_quest.json';
-import upgradesDb from '../../arc_raiders_upgrades.json';
 import { storageService } from './storageService';
 
-// REMOVED: import itemsDb from '../../arc_raiders_db.json'; 
-
-// NEW: Local state for the service
+// Dynamic Storage Variables
 let itemsDb = [];
+let questsDb = [];
+let upgradesDb = {};
 let enrichedItemsCache = null;
 
 const formatStationName = (key) => {
+  if (!key) return '';
   return key.split('_')
     .map(word => word.charAt(0).toUpperCase() + word.slice(1))
     .join(' ');
 };
 
-// NEW: Method to reload data after an update
+// Reload Function: Pulls fresh data from LocalStorage
 export const reloadData = () => {
-  itemsDb = storageService.getData();
-  enrichedItemsCache = null; // Clear cache to force re-calculation
+  itemsDb = storageService.getItems();
+  questsDb = storageService.getQuests();
+  upgradesDb = storageService.getUpgrades();
+  enrichedItemsCache = null; // Clear cache
 };
 
-// Initialize once on module load (if data exists)
+// Initialize on load
 if (storageService.hasData()) {
   reloadData();
 }
@@ -48,39 +49,46 @@ const getEnrichedItems = () => {
   });
 
   // 2. Process Station Upgrades
-  if (upgradesDb.station_upgrades) {
+  if (upgradesDb && upgradesDb.station_upgrades) {
     Object.entries(upgradesDb.station_upgrades).forEach(([stationKey, levels]) => {
       const stationName = formatStationName(stationKey);
-      Object.entries(levels).forEach(([levelKey, requirements]) => {
-        const level = parseInt(levelKey.replace('level_', ''));
-        requirements.forEach(req => {
-          if (req.id && itemsMap.has(req.id)) {
-            itemsMap.get(req.id).usage.upgrade.push({
-              station: stationName,
-              level: level,
-              amount: req.amount
+      // Ensure levels is an object before iterating
+      if (typeof levels === 'object' && levels !== null) {
+        Object.entries(levels).forEach(([levelKey, requirements]) => {
+          const level = parseInt(levelKey.replace('level_', ''));
+          if (Array.isArray(requirements)) {
+            requirements.forEach(req => {
+              if (req.id && itemsMap.has(req.id)) {
+                itemsMap.get(req.id).usage.upgrade.push({
+                  station: stationName,
+                  level: level,
+                  amount: req.amount
+                });
+              }
             });
           }
         });
-      });
+      }
     });
   }
 
   // 3. Process Expedition Requirements (treated as quests for now)
-  if (upgradesDb.expedition_requirements) {
+  if (upgradesDb && upgradesDb.expedition_requirements) {
     Object.entries(upgradesDb.expedition_requirements).forEach(([levelKey, requirements]) => {
       const level = parseInt(levelKey.replace('level_', ''));
-      requirements.forEach(req => {
-        if (req.id && itemsMap.has(req.id)) {
-          itemsMap.get(req.id).usage.quest.push({
-            type: 'expedition',
-            name: `Expedition Level ${level}`,
-            amount: req.amount,
-            needed: true,
-            details: `Expedition Level ${level}`
-          });
-        }
-      });
+      if (Array.isArray(requirements)) {
+        requirements.forEach(req => {
+          if (req.id && itemsMap.has(req.id)) {
+            itemsMap.get(req.id).usage.quest.push({
+              type: 'expedition',
+              name: `Expedition Level ${level}`,
+              amount: req.amount,
+              needed: true,
+              details: `Expedition Level ${level}`
+            });
+          }
+        });
+      }
     });
   }
 
@@ -109,12 +117,8 @@ const getEnrichedItems = () => {
  * Get all quests from the quest database
  * @returns {Array} All quests with their requirements
  */
-/**
- * Get all quests from the quest database, including those without item requirements
- * @returns {Array} All quests with their steps and requirements
- */
 export const getAllQuests = () => {
-  return questsDb;
+  return questsDb; // Returns the dynamic array
 };
 
 /**
@@ -130,14 +134,15 @@ export const getAllQuestsWithSteps = () => {
  * @returns {Array} Expedition levels with requirements
  */
 export const getAllExpeditions = () => {
-  if (!upgradesDb.expedition_requirements) return [];
+  // Safety check if upgradesDb or expedition_requirements is missing
+  if (!upgradesDb || !upgradesDb.expedition_requirements) return [];
 
   return Object.entries(upgradesDb.expedition_requirements)
-    .filter(([, requirements]) => requirements.some(r => r.id)) // Only levels with item requirements
+    .filter(([, requirements]) => Array.isArray(requirements) && requirements.some(r => r.id))
     .map(([levelKey, requirements]) => ({
       level: parseInt(levelKey.replace('level_', '')),
       name: `Expedition Level ${parseInt(levelKey.replace('level_', ''))}`,
-      requirements: requirements.filter(r => r.id) // Only item requirements, not currency
+      requirements: requirements.filter(r => r.id)
     }))
     .sort((a, b) => a.level - b.level);
 };
@@ -167,13 +172,17 @@ export const getAllItems = () => getEnrichedItems();
  */
 export const getAllUpgrades = () => {
   const upgrades = [];
-  if (upgradesDb.station_upgrades) {
+  // Safety check
+  if (upgradesDb && upgradesDb.station_upgrades) {
     Object.entries(upgradesDb.station_upgrades).forEach(([stationKey, levels]) => {
       const stationName = formatStationName(stationKey);
-      Object.keys(levels).forEach(levelKey => {
-        const level = parseInt(levelKey.replace('level_', ''));
-        upgrades.push({ station: stationName, level });
-      });
+      // Ensure levels is an object before using Object.keys
+      if (typeof levels === 'object' && levels !== null) {
+        Object.keys(levels).forEach(levelKey => {
+          const level = parseInt(levelKey.replace('level_', ''));
+          upgrades.push({ station: stationName, level });
+        });
+      }
     });
   }
 
