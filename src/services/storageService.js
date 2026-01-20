@@ -7,7 +7,7 @@ const KEYS = {
 
 // TODO: REPLACE THIS WITH YOUR ACTUAL BLOB URL AFTER FIRST SUCCESSFUL RUN OF api/update
 // Go to Vercel Storage -> Blob to find your store ID or full URL.
-const DB_URL = "https://[YOUR_STORE_ID].public.blob.vercel-storage.com/arc_raiders_db.json";
+const DB_URL = "https://3xepmfoaupvwolpr.public.blob.vercel-storage.com/arc_raiders_db.json";
 
 export const storageService = {
     // Check if we have data in memory
