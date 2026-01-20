@@ -1,0 +1,394 @@
+{
+    "station_upgrades": {
+        "gunsmith": {
+            "level_2": [
+                {
+                    "id": "rusted_tools",
+                    "name": "Rusted Tools",
+                    "amount": 3
+                },
+                {
+                    "id": "mechanical_components",
+                    "name": "Mechanical Components",
+                    "amount": 5
+                },
+                {
+                    "id": "wasp_driver",
+                    "name": "Wasp Driver",
+                    "amount": 8
+                }
+            ],
+            "level_3": [
+                {
+                    "id": "rusted_gear",
+                    "name": "Rusted Gear",
+                    "amount": 3
+                },
+                {
+                    "id": "advanced_mechanical_components",
+                    "name": "Advanced Mechanical Components",
+                    "amount": 5
+                },
+                {
+                    "id": "sentinel_firing_core",
+                    "name": "Sentinel Firing Core",
+                    "amount": 4
+                }
+            ]
+        },
+        "gear_bench": {
+            "level_2": [
+                {
+                    "id": "power_cable",
+                    "name": "Power Cable",
+                    "amount": 3
+                },
+                {
+                    "id": "electrical_components",
+                    "name": "Electrical Components",
+                    "amount": 5
+                },
+                {
+                    "id": "hornet_driver",
+                    "name": "Hornet Driver",
+                    "amount": 5
+                }
+            ],
+            "level_3": [
+                {
+                    "id": "industrial_battery",
+                    "name": "Industrial Battery",
+                    "amount": 3
+                },
+                {
+                    "id": "advanced_electrical_components",
+                    "name": "Advanced Electrical Components",
+                    "amount": 5
+                },
+                {
+                    "id": "bastion_cell",
+                    "name": "Bastion Cell",
+                    "amount": 6
+                }
+            ]
+        },
+        "medical_lab": {
+            "level_2": [
+                {
+                    "id": "cracked_bioscanner",
+                    "name": "Cracked Bioscanner",
+                    "amount": 2
+                },
+                {
+                    "id": "durable_cloth",
+                    "name": "Durable Cloth",
+                    "amount": 5
+                },
+                {
+                    "id": "tick_pod",
+                    "name": "Tick Pod",
+                    "amount": 8
+                }
+            ],
+            "level_3": [
+                {
+                    "id": "rusted_shut_medical_kit",
+                    "name": "Rusted Shut Medical Kit",
+                    "amount": 3
+                },
+                {
+                    "id": "antiseptic",
+                    "name": "Antiseptic",
+                    "amount": 8
+                },
+                {
+                    "id": "surveyor_vault",
+                    "name": "Surveyor Vault",
+                    "amount": 5
+                }
+            ]
+        },
+        "explosives": {
+            "level_2": [
+                {
+                    "id": "synthesized_fuel",
+                    "name": "Synthesized Fuel",
+                    "amount": 3
+                },
+                {
+                    "id": "crude_explosives",
+                    "name": "Crude Explosives",
+                    "amount": 5
+                },
+                {
+                    "id": "pop_trigger",
+                    "name": "Pop Trigger",
+                    "amount": 5
+                }
+            ],
+            "level_3": [
+                {
+                    "id": "laboratory_reagents",
+                    "name": "Laboratory Reagents",
+                    "amount": 3
+                },
+                {
+                    "id": "explosive_compound",
+                    "name": "Explosive Compound",
+                    "amount": 5
+                },
+                {
+                    "id": "rocketeer_driver",
+                    "name": "Rocketeer Driver",
+                    "amount": 3
+                }
+            ]
+        },
+        "utility": {
+            "level_2": [
+                {
+                    "id": "damaged_heat_sink",
+                    "name": "Damaged Heat Sink",
+                    "amount": 2
+                },
+                {
+                    "id": "electrical_components",
+                    "name": "Electrical Components",
+                    "amount": 5
+                },
+                {
+                    "id": "snitch_scanner",
+                    "name": "Snitch Scanner",
+                    "amount": 6
+                }
+            ],
+            "level_3": [
+                {
+                    "id": "fried_motherboard",
+                    "name": "Fried Motherboard",
+                    "amount": 3
+                },
+                {
+                    "id": "advanced_mechanical_components",
+                    "name": "Advanced Mechanical Components",
+                    "amount": 5
+                },
+                {
+                    "id": "leaper_pulse_unit",
+                    "name": "Leaper Pulse Unit",
+                    "amount": 4
+                }
+            ]
+        },
+        "refiner": {
+            "level_2": [
+                {
+                    "id": "toaster",
+                    "name": "Toaster",
+                    "amount": 3
+                },
+                {
+                    "id": "arc_motion_core",
+                    "name": "ARC Motion Core",
+                    "amount": 5
+                },
+                {
+                    "id": "fireball_burner",
+                    "name": "Fireball Burner",
+                    "amount": 8
+                }
+            ],
+            "level_3": [
+                {
+                    "id": "motor",
+                    "name": "Motor",
+                    "amount": 3
+                },
+                {
+                    "id": "arc_circuitry",
+                    "name": "ARC Circuitry",
+                    "amount": 10
+                },
+                {
+                    "id": "bombardier_cell",
+                    "name": "Bombardier Cell",
+                    "amount": 6
+                }
+            ]
+        },
+        "scrappy": {
+            "level_1": [
+                {
+                    "id": "dog_collar",
+                    "name": "Dog Collar",
+                    "amount": 1
+                }
+            ],
+            "level_2": [
+                {
+                    "id": "lemon",
+                    "name": "Lemon",
+                    "amount": 3
+                },
+                {
+                    "id": "apricot",
+                    "name": "Apricot",
+                    "amount": 3
+                }
+            ],
+            "level_3": [
+                {
+                    "id": "prickly_pear",
+                    "name": "Prickly Pear",
+                    "amount": 6
+                },
+                {
+                    "id": "olives",
+                    "name": "Olives",
+                    "amount": 6
+                },
+                {
+                    "id": "cat_bed",
+                    "name": "Cat Bed",
+                    "amount": 1
+                }
+            ],
+            "level_4": [
+                {
+                    "id": "mushroom",
+                    "name": "Mushroom",
+                    "amount": 12
+                },
+                {
+                    "id": "apricot",
+                    "name": "Apricot",
+                    "amount": 12
+                },
+                {
+                    "id": "very_comfortable_pillow",
+                    "name": "Very Comfortable Pillow",
+                    "amount": 3
+                }
+            ]
+        }
+    },
+    "expedition_requirements": {
+        "level_1": [
+            {
+                "id": "metal_parts",
+                "name": "Metal Parts",
+                "amount": 150
+            },
+            {
+                "id": "rubber_parts",
+                "name": "Rubber Parts",
+                "amount": 200
+            },
+            {
+                "id": "arc_alloy",
+                "name": "ARC Alloy",
+                "amount": 80
+            },
+            {
+                "id": "steel_spring",
+                "name": "Steel Spring",
+                "amount": 15
+            }
+        ],
+        "level_2": [
+            {
+                "id": "durable_cloth",
+                "name": "Durable Cloth",
+                "amount": 35
+            },
+            {
+                "id": "wires",
+                "name": "Wires",
+                "amount": 30
+            },
+            {
+                "id": "electrical_components",
+                "name": "Electrical Components",
+                "amount": 30
+            },
+            {
+                "id": "cooling_fan",
+                "name": "Cooling Fan",
+                "amount": 5
+            }
+        ],
+        "level_3": [
+            {
+                "id": "light_bulb",
+                "name": "Light Bulb",
+                "amount": 5
+            },
+            {
+                "id": "battery",
+                "name": "Battery",
+                "amount": 30
+            },
+            {
+                "id": "sensors",
+                "name": "Sensors",
+                "amount": 20
+            },
+            {
+                "id": "exodus_modules",
+                "name": "Exodus Modules",
+                "amount": 1
+            }
+        ],
+        "level_4": [
+            {
+                "id": "humidifier",
+                "name": "Humidifier",
+                "amount": 5
+            },
+            {
+                "id": "advanced_electrical_components",
+                "name": "Advanced Electrical Components",
+                "amount": 5
+            },
+            {
+                "id": "magnetic_accelerator",
+                "name": "Magnetic Accelerator",
+                "amount": 3
+            },
+            {
+                "id": "leaper_pulse_unit",
+                "name": "Leaper Pulse Unit",
+                "amount": 3
+            }
+        ],
+        "level_5": [
+            {
+                "name": "Combat Item Value",
+                "amount": 250000,
+                "is_currency": true
+            },
+            {
+                "name": "Survival Item Value",
+                "amount": 100000,
+                "is_currency": true
+            },
+            {
+                "name": "Provisions Value",
+                "amount": 180000,
+                "is_currency": true
+            },
+            {
+                "name": "Material Value",
+                "amount": 300000,
+                "is_currency": true
+            }
+        ],
+        "level_6": [
+            {
+                "name": "Wait for Departure",
+                "amount": 0,
+                "is_task": true
+            }
+        ]
+    }
+}

@@ -1,8 +1,9 @@
-import { useState, useCallback, useEffect } from 'react';
+import { useState, useCallback } from 'react';
 import SearchBar from './components/SearchBar';
 import SearchResults from './components/SearchResults';
 import ItemCard from './components/ItemCard';
 import UpgradeTracker from './components/UpgradeTracker';
+import QuestTracker from './components/QuestTracker';
 import { findItem } from './services/dataService';
 import { userProgressService } from './services/userProgressService';
 import './App.css';
@@ -12,12 +13,13 @@ function App() {
   const [selectedItem, setSelectedItem] = useState(null);
   const [query, setQuery] = useState('');
   const [isTrackerOpen, setIsTrackerOpen] = useState(false);
-  const [completedUpgrades, setCompletedUpgrades] = useState(new Set());
-
-  useEffect(() => {
-    // Load initial state
-    setCompletedUpgrades(userProgressService.getCompletedUpgrades());
-  }, []);
+  const [isQuestTrackerOpen, setIsQuestTrackerOpen] = useState(false);
+  const [completedUpgrades, setCompletedUpgrades] = useState(() =>
+    userProgressService.getCompletedUpgrades()
+  );
+  const [completedQuests, setCompletedQuests] = useState(() =>
+    userProgressService.getCompletedQuests()
+  );
 
   const handleSearch = useCallback((searchQuery) => {
     setQuery(searchQuery);
@@ -68,12 +70,20 @@ function App() {
             </div>
             <p className="tagline">Item Analyzer</p>
           </div>
-          <button
-            className="upgrade-btn"
-            onClick={() => setIsTrackerOpen(true)}
-          >
-            🛠️ Upgrades
-          </button>
+          <div className="header-buttons">
+            <button
+              className="upgrade-btn"
+              onClick={() => setIsTrackerOpen(true)}
+            >
+              🛠️ Upgrades
+            </button>
+            <button
+              className="quest-btn"
+              onClick={() => setIsQuestTrackerOpen(true)}
+            >
+              📜 Quests
+            </button>
+          </div>
         </div>
       </header>
 
@@ -92,6 +102,7 @@ function App() {
             item={selectedItem}
             onBack={handleBack}
             completedUpgrades={completedUpgrades}
+            completedQuests={completedQuests}
           />
         )}
       </main>
@@ -99,7 +110,15 @@ function App() {
       <UpgradeTracker
         isOpen={isTrackerOpen}
         onClose={() => setIsTrackerOpen(false)}
+        completedUpgrades={completedUpgrades}
         onUpdate={setCompletedUpgrades}
+      />
+
+      <QuestTracker
+        isOpen={isQuestTrackerOpen}
+        onClose={() => setIsQuestTrackerOpen(false)}
+        completedQuests={completedQuests}
+        onUpdate={setCompletedQuests}
       />
 
       <footer className="app-footer">

@@ -2,8 +2,8 @@ import { getRecommendation } from '../services/dataService';
 import VerdictBanner from './VerdictBanner';
 import './ItemCard.css';
 
-export default function ItemCard({ item, onBack, completedUpgrades = new Set() }) {
-    const recommendation = getRecommendation(item, completedUpgrades);
+export default function ItemCard({ item, onBack, completedUpgrades = new Set(), completedQuests = new Set() }) {
+    const recommendation = getRecommendation(item, completedUpgrades, completedQuests);
 
     return (
         <div className="item-card">
@@ -57,13 +57,25 @@ export default function ItemCard({ item, onBack, completedUpgrades = new Set() }
                     {/* Quest Usage */}
                     <div className="usage-block">
                         <h4>Quest / Expedition Requirements</h4>
-                        {item.usage?.quest?.needed ? (
-                            <div className="usage-item critical">
-                                <span className="usage-icon">⛔</span>
-                                <div className="usage-info">
-                                    <span className="usage-primary">{item.usage.quest.details}</span>
-                                    <span className="usage-secondary">Amount needed: {item.usage.quest.amount}</span>
-                                </div>
+                        {item.usage?.quest?.length > 0 ? (
+                            <div className="quest-list">
+                                {item.usage.quest.map((quest, index) => {
+                                    const isComplete = completedQuests.has(quest.details);
+                                    return (
+                                        <div key={index} className={`usage-item ${isComplete ? 'completed' : 'critical'}`}>
+                                            <span className="usage-icon">
+                                                {isComplete ? '✅' : (quest.type === 'expedition' ? '📦' : '⛔')}
+                                            </span>
+                                            <div className="usage-info">
+                                                <span className="usage-primary">
+                                                    {quest.details}
+                                                    {isComplete && <span className="completed-badge">COMPLETED</span>}
+                                                </span>
+                                                <span className="usage-secondary">Amount needed: {quest.amount}</span>
+                                            </div>
+                                        </div>
+                                    );
+                                })}
                             </div>
                         ) : (
                             <p className="no-usage">✓ Not required for any quest</p>

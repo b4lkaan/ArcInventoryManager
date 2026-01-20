@@ -1,4 +1,114 @@
-import db from '../../arc_raiders_db.json';
+import itemsDb from '../../arc_raiders_db.json';
+import questsDb from '../../arc_raiders_quest.json';
+import upgradesDb from '../../arc_raiders_upgrades.json';
+
+// Cache for enriched items
+let enrichedItemsCache = null;
+
+const formatStationName = (key) => {
+  return key.split('_')
+    .map(word => word.charAt(0).toUpperCase() + word.slice(1))
+    .join(' ');
+};
+
+const getEnrichedItems = () => {
+  if (enrichedItemsCache) return enrichedItemsCache;
+
+  // 1. Initialize Map with items (cloning to avoid mutation)
+  const itemsMap = new Map();
+  itemsDb.forEach(item => {
+    itemsMap.set(item.id, {
+      ...item,
+      // Reset usage to be populated dynamically
+      usage: {
+        quest: [],
+        upgrade: []
+      }
+    });
+  });
+
+  // 2. Process Station Upgrades
+  if (upgradesDb.station_upgrades) {
+    Object.entries(upgradesDb.station_upgrades).forEach(([stationKey, levels]) => {
+      const stationName = formatStationName(stationKey);
+      Object.entries(levels).forEach(([levelKey, requirements]) => {
+        const level = parseInt(levelKey.replace('level_', ''));
+        requirements.forEach(req => {
+          if (req.id && itemsMap.has(req.id)) {
+            itemsMap.get(req.id).usage.upgrade.push({
+              station: stationName,
+              level: level,
+              amount: req.amount
+            });
+          }
+        });
+      });
+    });
+  }
+
+  // 3. Process Expedition Requirements (treated as quests for now)
+  if (upgradesDb.expedition_requirements) {
+    Object.entries(upgradesDb.expedition_requirements).forEach(([levelKey, requirements]) => {
+      const level = parseInt(levelKey.replace('level_', ''));
+      requirements.forEach(req => {
+        if (req.id && itemsMap.has(req.id)) {
+          itemsMap.get(req.id).usage.quest.push({
+            type: 'expedition',
+            name: `Expedition Level ${level}`,
+            amount: req.amount,
+            needed: true,
+            details: `Expedition Level ${level}`
+          });
+        }
+      });
+    });
+  }
+
+  // 4. Process Quests
+  questsDb.forEach(quest => {
+    if (quest.requirements) {
+      quest.requirements.forEach(req => {
+        if (req.id && itemsMap.has(req.id)) {
+          itemsMap.get(req.id).usage.quest.push({
+            type: 'quest',
+            name: quest.quest_name,
+            amount: req.amount,
+            needed: true,
+            details: quest.quest_name
+          });
+        }
+      });
+    }
+  });
+
+  enrichedItemsCache = Array.from(itemsMap.values());
+  return enrichedItemsCache;
+};
+
+/**
+ * Get all quests from the quest database
+ * @returns {Array} All quests with their requirements
+ */
+export const getAllQuests = () => {
+  return questsDb.filter(quest => quest.requirements && quest.requirements.length > 0);
+};
+
+/**
+ * Get all expedition levels from the upgrades database
+ * @returns {Array} Expedition levels with requirements
+ */
+export const getAllExpeditions = () => {
+  if (!upgradesDb.expedition_requirements) return [];
+
+  return Object.entries(upgradesDb.expedition_requirements)
+    .filter(([, requirements]) => requirements.some(r => r.id)) // Only levels with item requirements
+    .map(([levelKey, requirements]) => ({
+      level: parseInt(levelKey.replace('level_', '')),
+      name: `Expedition Level ${parseInt(levelKey.replace('level_', ''))}`,
+      requirements: requirements.filter(r => r.id) // Only item requirements, not currency
+    }))
+    .sort((a, b) => a.level - b.level);
+};
 
 /**
  * Search for items by name (case-insensitive partial match)
@@ -8,7 +118,7 @@ import db from '../../arc_raiders_db.json';
 export const findItem = (query) => {
   if (!query || query.trim() === '') return [];
   const lowerQuery = query.toLowerCase().trim();
-  return db.filter(item =>
+  return getEnrichedItems().filter(item =>
     item.name.toLowerCase().includes(lowerQuery)
   );
 };
@@ -17,29 +127,28 @@ export const findItem = (query) => {
  * Get all items from the database
  * @returns {Array} All items
  */
-export const getAllItems = () => db;
+export const getAllItems = () => getEnrichedItems();
 
 /**
  * Get all unique upgrades available in the database
  * @returns {Array} List of { station, level } objects sorted by station then level
  */
 export const getAllUpgrades = () => {
-  const upgrades = new Set();
-
-  db.forEach(item => {
-    if (item.usage?.upgrade) {
-      item.usage.upgrade.forEach(u => {
-        upgrades.add(JSON.stringify({ station: u.station, level: u.level }));
+  const upgrades = [];
+  if (upgradesDb.station_upgrades) {
+    Object.entries(upgradesDb.station_upgrades).forEach(([stationKey, levels]) => {
+      const stationName = formatStationName(stationKey);
+      Object.keys(levels).forEach(levelKey => {
+        const level = parseInt(levelKey.replace('level_', ''));
+        upgrades.push({ station: stationName, level });
       });
-    }
-  });
-
-  return Array.from(upgrades)
-    .map(u => JSON.parse(u))
-    .sort((a, b) => {
-      if (a.station !== b.station) return a.station.localeCompare(b.station);
-      return a.level - b.level;
     });
+  }
+
+  return upgrades.sort((a, b) => {
+    if (a.station !== b.station) return a.station.localeCompare(b.station);
+    return a.level - b.level;
+  });
 };
 
 /**
@@ -54,9 +163,10 @@ export const getAllUpgrades = () => {
  * 
  * @param {Object} item - Item object from database
  * @param {Set<string>} completedUpgrades - Set of "Station-Level" strings that are completed
+ * @param {Set<string>} completedQuests - Set of quest/expedition names that are completed
  * @returns {Object} Recommendation with type, label, icon, color, and reason
  */
-export const getRecommendation = (item, completedUpgrades = new Set()) => {
+export const getRecommendation = (item, completedUpgrades = new Set(), completedQuests = new Set()) => {
   // 0. Core Component Priority - DO NOT SELL
   if (item.is_core) {
     return {
@@ -71,21 +181,27 @@ export const getRecommendation = (item, completedUpgrades = new Set()) => {
   }
 
   // 1. Quest Priority - CRITICAL
-  if (item.usage?.quest?.needed) {
-    // Check if it's an Expedition requirement
-    const isExpedition = item.usage.quest.details?.toLowerCase().includes('expedition');
-    const label = isExpedition ? 'EXPEDITION' : 'DO NOT SELL';
-    const reasonPrefix = isExpedition ? 'Required for Expedition' : 'Required for Quest';
+  // usage.quest is now an array
+  if (item.usage?.quest?.length > 0) {
+    // Filter out completed quests/expeditions
+    const activeQuests = item.usage.quest.filter(q => !completedQuests.has(q.details));
 
-    return {
-      type: 'CRITICAL',
-      label: label,
-      icon: '⛔',
-      color: '#dc2626',
-      bgColor: 'rgba(220, 38, 38, 0.15)',
-      reason: `${reasonPrefix}: ${item.usage.quest.details}`,
-      subtext: `Keep at least ${item.usage.quest.amount}`
-    };
+    if (activeQuests.length > 0) {
+      const isExpedition = activeQuests.some(q => q.type === 'expedition');
+      const label = isExpedition ? 'EXPEDITION' : 'DO NOT SELL';
+      const details = activeQuests.map(q => q.details).join(', ');
+      const totalAmount = activeQuests.reduce((sum, q) => sum + q.amount, 0);
+
+      return {
+        type: 'CRITICAL',
+        label: label,
+        icon: '⛔',
+        color: '#dc2626',
+        bgColor: 'rgba(220, 38, 38, 0.15)',
+        reason: `Required for: ${details}`,
+        subtext: `Keep at least ${totalAmount}`
+      };
+    }
   }
 
   // 2. Upgrade Priority - IMPORTANT
