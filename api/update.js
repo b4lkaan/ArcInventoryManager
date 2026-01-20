@@ -191,7 +191,8 @@ export default async function handler(request, response) {
         const blob = await put('arc_raiders_db.json', JSON.stringify(fullDatabase), {
             access: 'public',
             addRandomSuffix: false, // Important: Keeps the filename constant
-            token: process.env.BLOB_READ_WRITE_TOKEN // Auto-injected by Vercel
+            token: process.env.BLOB_READ_WRITE_TOKEN, // Auto-injected by Vercel
+            allowOverwrite: true
         });
 
         return response.status(200).json({
