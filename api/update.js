@@ -1,40 +1,15 @@
 import { put } from '@vercel/blob';
 
-// Source: PDF v3.2_MasterSheet 16x9.pdf (Page 3)
+// 1. Component Prices (Copied from your data/componentPrices.js)
 const COMPONENT_PRICES = {
-    // --- Essentials / Base Materials ---
-    "metal_parts": 75,
-    "plastic_parts": 60,
-    "fabric": 50,
-    "chemicals": 50,
-    "rubber_parts": 50,
-
-    // --- Resources & Tech ---
-    "wires": 200,
-    "arc_alloy": 200,
-    "battery": 250,
-    "steel_spring": 300,
-    "oil": 300,
-    "duct_tape": 300,
-    "magnet": 330,
-
-    // --- High Value Components ---
-    "electrical_components": 640,
-    "mechanical_components": 640,
-    "explosive_compound": 1000,
-    "processor": 500,
-    "voltage_converter": 500,
-
-    // --- Advanced / Rare ---
-    "advanced_electrical_components": 1750,
-    "advanced_mechanical_components": 1750,
-
-    // --- Fallbacks ---
-    "scrap": 1,
-    "organic_matter": 10
+    "metal_parts": 75, "plastic_parts": 60, "fabric": 50, "chemicals": 50, "rubber_parts": 50,
+    "wires": 200, "arc_alloy": 200, "battery": 250, "steel_spring": 300, "oil": 300, "duct_tape": 300, "magnet": 330,
+    "electrical_components": 640, "mechanical_components": 640, "explosive_compound": 1000, "processor": 500, "voltage_converter": 500,
+    "advanced_electrical_components": 1750, "advanced_mechanical_components": 1750,
+    "scrap": 1, "organic_matter": 10
 };
 
-// GitHub API Endpoints
+// 2. GitHub Configuration
 const API_BASE = 'https://api.github.com/repos/RaidTheory/arcraiders-data/contents';
 const ENDPOINTS = {
     ITEMS: `${API_BASE}/items`,
@@ -42,11 +17,11 @@ const ENDPOINTS = {
     HIDEOUT: `${API_BASE}/hideout`
 };
 
-// --- Helper: ROI Logic ---
+// --- Helper Functions ---
+
 const calculateRoi = (item) => {
     const sellPrice = item.value || 0;
     const recycleDict = item.recyclesInto || {};
-
     let recycleValue = 0;
     let yieldsList = [];
 
@@ -65,51 +40,44 @@ const calculateRoi = (item) => {
     let recommendation = "NEUTRAL";
     if (roiPct > 0) recommendation = "RECYCLE";
     else if (roiPct < 0) recommendation = "SELL";
-
-    if (item.rarity === 'Rare' && recycleValue > sellPrice) {
-        recommendation = "RECYCLE PRIORITY";
-    }
+    if (item.rarity === 'Rare' && recycleValue > sellPrice) recommendation = "RECYCLE PRIORITY";
 
     return { recycleValue, roiPct, yields: yieldsList.join(', '), recommendation };
 };
 
-// --- Helper: Generic Fetcher ---
-const fetchFolder = async (url, label) => {
-    console.log(`Fetching ${label} list...`);
+const fetchFolder = async (url) => {
     const listResponse = await fetch(url);
-    if (!listResponse.ok) throw new Error(`Failed to fetch ${label} list`);
+    if (!listResponse.ok) throw new Error(`Failed to fetch list from ${url}`);
     const files = await listResponse.json();
 
     const results = [];
-    const jsonFiles = files.filter(f => f.name.endsWith('.json'));
-
-    // Parallel fetch for speed
-    const filePromises = jsonFiles.map(async (file) => {
+    for (const file of files) {
+        if (!file.name.endsWith('.json')) continue;
         const contentRes = await fetch(file.download_url);
-        return await contentRes.json();
-    });
-
-    return Promise.all(filePromises);
+        const content = await contentRes.json();
+        results.push(content);
+    }
+    return results;
 };
 
+// --- Main Handler ---
+
 export default async function handler(request, response) {
-    // 1. Security Check
-    const authHeader = request.headers['authorization'];
+    // Security Check
+    const authHeader = request.headers.get('authorization');
     if (authHeader !== `Bearer ${process.env.CRON_SECRET}`) {
         return response.status(401).json({ error: 'Unauthorized' });
     }
 
     try {
-        console.log("Starting update process...");
-
-        // 2. Fetch and Process Data (Parallel)
+        // A. Fetch All Data
         const [rawItems, rawQuests, rawHideout] = await Promise.all([
-            fetchFolder(ENDPOINTS.ITEMS, "Items"),
-            fetchFolder(ENDPOINTS.QUESTS, "Quests"),
-            fetchFolder(ENDPOINTS.HIDEOUT, "Upgrades")
+            fetchFolder(ENDPOINTS.ITEMS),
+            fetchFolder(ENDPOINTS.QUESTS),
+            fetchFolder(ENDPOINTS.HIDEOUT)
         ]);
 
-        // Process Items
+        // B. Process Items
         const processedItems = rawItems.map(rawItem => {
             const roiData = calculateRoi(rawItem);
             return {
@@ -128,7 +96,7 @@ export default async function handler(request, response) {
             };
         });
 
-        // Process Quests
+        // C. Process Quests
         const processedQuests = rawQuests.map(rawQuest => {
             const steps = (rawQuest.objectives || []).map(obj =>
                 typeof obj === 'string' ? obj : (obj.en || '')
@@ -156,11 +124,12 @@ export default async function handler(request, response) {
             };
         });
 
-        // Process Upgrades (Hideout)
+        // D. Process Upgrades (Hideout)
         const upgradesObj = { station_upgrades: {}, expedition_requirements: {} };
         rawHideout.forEach(station => {
             const stationId = station.id || 'unknown';
             const levelsObj = {};
+
             if (Array.isArray(station.levels)) {
                 station.levels.forEach(levelData => {
                     const levelKey = `level_${levelData.level}`;
@@ -180,6 +149,7 @@ export default async function handler(request, response) {
             }
         });
 
+        // E. Create Final DB Object
         const fullDatabase = {
             items: processedItems,
             quests: processedQuests,
@@ -187,12 +157,11 @@ export default async function handler(request, response) {
             lastUpdated: new Date().toISOString()
         };
 
-        // 3. Upload to Vercel Blob
+        // F. Upload to Blob
         const blob = await put('arc_raiders_db.json', JSON.stringify(fullDatabase), {
             access: 'public',
-            addRandomSuffix: false, // Important: Keeps the filename constant
-            token: process.env.BLOB_READ_WRITE_TOKEN, // Auto-injected by Vercel
-            allowOverwrite: true
+            addRandomSuffix: false, // Keeps the URL constant!
+            token: process.env.BLOB_READ_WRITE_TOKEN
         });
 
         return response.status(200).json({
@@ -203,6 +172,6 @@ export default async function handler(request, response) {
 
     } catch (error) {
         console.error("Update Error:", error);
-        return response.status(500).json({ error: error.message });
+        return response.status(500).json({ error: error.message, stack: error.stack });
     }
 }
