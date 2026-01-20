@@ -150,20 +150,34 @@ const QuestTracker = ({
                             {expeditions.map(exp => {
                                 const isDone = completedQuests.has(exp.name);
                                 return (
-                                    <label key={exp.name} className={`quest-item ${isDone ? 'completed' : ''}`}>
-                                        <input
-                                            type="checkbox"
-                                            checked={isDone}
-                                            onChange={(e) => toggleQuest(exp.name, e.target.checked)}
-                                        />
-                                        <div className="quest-info">
-                                            <span className="quest-name">{exp.name}</span>
-                                            <span className="quest-requirements">
-                                                {exp.requirements.map(r => `${r.name} x${r.amount}`).join(', ')}
-                                            </span>
+                                    <div key={exp.name} className={`quest-item expedition-item ${isDone ? 'completed' : ''}`}>
+                                        <div className="quest-header-row">
+                                            <label className="quest-main-check">
+                                                <input
+                                                    type="checkbox"
+                                                    checked={isDone}
+                                                    onChange={(e) => toggleQuest(exp.name, e.target.checked)}
+                                                />
+                                                <span className="quest-name">{exp.name}</span>
+                                            </label>
+                                            {isDone && <span className="status-tag">DONE</span>}
                                         </div>
-                                        {isDone && <span className="status-tag">DONE</span>}
-                                    </label>
+
+                                        <div className="quest-details">
+                                            <ul className="quest-steps-list">
+                                                {exp.requirements.map((req, idx) => (
+                                                    <li key={idx}>
+                                                        • {req.is_currency
+                                                            ? `${req.name}: ${req.amount.toLocaleString()}`
+                                                            : req.is_task
+                                                                ? req.name
+                                                                : `${req.name} x${req.amount}`
+                                                        }
+                                                    </li>
+                                                ))}
+                                            </ul>
+                                        </div>
+                                    </div>
                                 );
                             })}
                         </div>

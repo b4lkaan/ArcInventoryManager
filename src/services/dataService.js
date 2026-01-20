@@ -1,4 +1,5 @@
 import { storageService } from './storageService';
+import localUpgradesData from '../../arc_raiders_upgrades.json';
 
 // Dynamic Storage Variables
 let itemsDb = [];
@@ -130,19 +131,19 @@ export const getAllQuestsWithSteps = () => {
 };
 
 /**
- * Get all expedition levels from the upgrades database
+ * Get all expedition levels from the local upgrades JSON file
  * @returns {Array} Expedition levels with requirements
  */
 export const getAllExpeditions = () => {
-  // Safety check if upgradesDb or expedition_requirements is missing
-  if (!upgradesDb || !upgradesDb.expedition_requirements) return [];
+  // Use local data for expedition requirements since online DB doesn't have this
+  const expeditionReqs = localUpgradesData?.expedition_requirements;
+  if (!expeditionReqs) return [];
 
-  return Object.entries(upgradesDb.expedition_requirements)
-    .filter(([, requirements]) => Array.isArray(requirements) && requirements.some(r => r.id))
+  return Object.entries(expeditionReqs)
     .map(([levelKey, requirements]) => ({
       level: parseInt(levelKey.replace('level_', '')),
-      name: `Expedition Level ${parseInt(levelKey.replace('level_', ''))}`,
-      requirements: requirements.filter(r => r.id)
+      name: `Expedition ${parseInt(levelKey.replace('level_', ''))}`,
+      requirements: requirements || []
     }))
     .sort((a, b) => a.level - b.level);
 };

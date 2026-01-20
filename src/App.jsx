@@ -143,24 +143,6 @@ function App() {
           </div>
           <div className="header-buttons">
             <button
-              className="update-db-btn"
-              onClick={handleUpdateDb}
-              title="Refresh item database from GitHub"
-              style={{
-                fontSize: '0.8rem',
-                padding: '8px 12px',
-                marginRight: '10px',
-                background: 'rgba(59, 130, 246, 0.2)',
-                border: '1px solid rgba(59, 130, 246, 0.4)',
-                borderRadius: '6px',
-                color: '#60a5fa',
-                cursor: 'pointer',
-                transition: 'all 0.2s ease'
-              }}
-            >
-              🔄 Update DB
-            </button>
-            <button
               className="quest-btn"
               onClick={() => setIsQuestTrackerOpen(true)}
             >
