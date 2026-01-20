@@ -1,8 +1,11 @@
-import itemsDb from '../../arc_raiders_db.json';
 import questsDb from '../../arc_raiders_quest.json';
 import upgradesDb from '../../arc_raiders_upgrades.json';
+import { storageService } from './storageService';
 
-// Cache for enriched items
+// REMOVED: import itemsDb from '../../arc_raiders_db.json'; 
+
+// NEW: Local state for the service
+let itemsDb = [];
 let enrichedItemsCache = null;
 
 const formatStationName = (key) => {
@@ -11,8 +14,25 @@ const formatStationName = (key) => {
     .join(' ');
 };
 
+// NEW: Method to reload data after an update
+export const reloadData = () => {
+  itemsDb = storageService.getData();
+  enrichedItemsCache = null; // Clear cache to force re-calculation
+};
+
+// Initialize once on module load (if data exists)
+if (storageService.hasData()) {
+  reloadData();
+}
+
 const getEnrichedItems = () => {
   if (enrichedItemsCache) return enrichedItemsCache;
+
+  // Safety check: if db is empty, try loading again
+  if (itemsDb.length === 0) reloadData();
+
+  // If still empty (first run case before fetch), return empty array
+  if (itemsDb.length === 0) return [];
 
   // 1. Initialize Map with items (cloning to avoid mutation)
   const itemsMap = new Map();
