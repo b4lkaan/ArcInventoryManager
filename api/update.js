@@ -82,7 +82,7 @@ export default async function handler(request, response) {
             const roiData = calculateRoi(rawItem);
             return {
                 id: rawItem.id,
-                name: rawItem.name?.en || rawItem.id,
+                name: rawItem.name || rawItem.id, // Preserve full localized object
                 category: rawItem.type || "Unknown",
                 sell_price: rawItem.value,
                 recycle_value: roiData.recycleValue,
@@ -92,15 +92,14 @@ export default async function handler(request, response) {
                 image: rawItem.imageFilename,
                 rarity: rawItem.rarity,
                 weight: rawItem.weightKg,
-                description: rawItem.description?.en || ""
+                description: rawItem.description || "" // Preserve full localized object
             };
         });
 
         // C. Process Quests
         const processedQuests = rawQuests.map(rawQuest => {
-            const steps = (rawQuest.objectives || []).map(obj =>
-                typeof obj === 'string' ? obj : (obj.en || '')
-            ).filter(s => s);
+            // Preserve full localized objectives array
+            const steps = rawQuest.objectives || [];
 
             const rewards = (rawQuest.rewardItemIds || []).map(r => ({
                 id: r.itemId,
@@ -115,12 +114,13 @@ export default async function handler(request, response) {
             }));
 
             return {
-                quest_name: rawQuest.name?.en || rawQuest.id || 'Unknown Quest',
-                steps: steps,
+                id: rawQuest.id,
+                quest_name: rawQuest.name || rawQuest.id || 'Unknown Quest', // Preserve full localized object
+                steps: steps, // Full localized objectives
                 requirements: requirements.length > 0 ? requirements : undefined,
                 rewards: rewards.length > 0 ? rewards : undefined,
                 trader: rawQuest.trader,
-                description: rawQuest.description?.en || ''
+                description: rawQuest.description || '' // Preserve full localized object
             };
         });
 

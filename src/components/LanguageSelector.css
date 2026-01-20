@@ -1,0 +1,41 @@
+.language-selector {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-radius: 8px;
+    padding: 0.4rem 0.6rem;
+    transition: all 0.2s ease;
+}
+
+.language-selector:hover {
+    background: rgba(255, 255, 255, 0.12);
+    border-color: rgba(255, 255, 255, 0.25);
+}
+
+.language-icon {
+    font-size: 1rem;
+    opacity: 0.9;
+}
+
+.language-dropdown {
+    background: transparent;
+    border: none;
+    color: inherit;
+    font-size: 0.85rem;
+    font-weight: 500;
+    cursor: pointer;
+    padding-right: 0.25rem;
+    outline: none;
+}
+
+.language-dropdown option {
+    background: #1a1a2e;
+    color: #fff;
+    padding: 0.5rem;
+}
+
+.language-dropdown:focus {
+    outline: none;
+}

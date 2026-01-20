@@ -4,6 +4,7 @@ import SearchResults from './components/SearchResults';
 import ItemCard from './components/ItemCard';
 import QuestTracker from './components/QuestTracker';
 import ActiveQuestSidebar from './components/ActiveQuestSidebar';
+import LanguageSelector from './components/LanguageSelector';
 import { findItem, getAllQuestsWithSteps, reloadData } from './services/dataService';
 import { storageService } from './services/storageService';
 import { userProgressService } from './services/userProgressService';
@@ -142,6 +143,7 @@ function App() {
             <p className="tagline">Item Analyzer</p>
           </div>
           <div className="header-buttons">
+            <LanguageSelector />
             <button
               className="quest-btn"
               onClick={() => setIsQuestTrackerOpen(true)}

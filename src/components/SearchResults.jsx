@@ -1,7 +1,11 @@
 import { getRecommendation } from '../services/dataService';
+import { useLanguage } from '../context/LanguageContext';
+import { getLocalizedValue } from '../utils/localization';
 import './SearchResults.css';
 
 export default function SearchResults({ results, onSelect, query }) {
+    const { language } = useLanguage();
+
     if (!query || query.trim() === '') {
         return null;
     }
@@ -40,13 +44,13 @@ export default function SearchResults({ results, onSelect, query }) {
                                 {item.image && (
                                     <img
                                         src={item.image}
-                                        alt={item.name}
+                                        alt={getLocalizedValue(item.name, language)}
                                         className="result-image"
                                         loading="lazy"
                                     />
                                 )}
                                 <div className="result-info">
-                                    <span className="result-name">{item.name}</span>
+                                    <span className="result-name">{getLocalizedValue(item.name, language)}</span>
                                     <span className="result-category">{item.category}</span>
                                 </div>
                             </div>

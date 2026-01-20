@@ -1,8 +1,11 @@
 import { getRecommendation } from '../services/dataService';
+import { useLanguage } from '../context/LanguageContext';
+import { getLocalizedValue } from '../utils/localization';
 import VerdictBanner from './VerdictBanner';
 import './ItemCard.css';
 
 export default function ItemCard({ item, onBack, completedUpgrades = new Set(), completedQuests = new Set() }) {
+    const { language } = useLanguage();
     const recommendation = getRecommendation(item, completedUpgrades, completedQuests);
 
     return (
@@ -16,11 +19,11 @@ export default function ItemCard({ item, onBack, completedUpgrades = new Set(), 
                     {item.image && (
                         <img
                             src={item.image}
-                            alt={item.name}
+                            alt={getLocalizedValue(item.name, language)}
                             className="item-header-image"
                         />
                     )}
-                    <h1>{item.name}</h1>
+                    <h1>{getLocalizedValue(item.name, language)}</h1>
                     <span className="category-badge">{item.category}</span>
                 </div>
             </div>

@@ -1,4 +1,6 @@
 import React, { useState } from 'react';
+import { useLanguage } from '../context/LanguageContext';
+import { getLocalizedValue } from '../utils/localization';
 import './ActiveQuestSidebar.css';
 
 const ActiveQuestSidebar = ({
@@ -8,8 +10,9 @@ const ActiveQuestSidebar = ({
     allQuests,
     onRemove
 }) => {
-    // Filter full quest objects for tracked IDs
-    const questsToShow = allQuests.filter(q => trackedQuests.has(q.quest_name));
+    const { language } = useLanguage();
+    // Filter full quest objects for tracked IDs (use English name for key matching)
+    const questsToShow = allQuests.filter(q => trackedQuests.has(getLocalizedValue(q.quest_name, 'en')));
 
     // Don't show anything if there are no tracked quests
     if (questsToShow.length === 0) return null;
@@ -43,12 +46,12 @@ const ActiveQuestSidebar = ({
                     </div>
                 ) : (
                     questsToShow.map(quest => (
-                        <div key={quest.quest_name} className="active-quest-card">
+                        <div key={getLocalizedValue(quest.quest_name, 'en')} className="active-quest-card">
                             <div className="quest-card-header">
-                                <h4>{quest.quest_name}</h4>
+                                <h4>{getLocalizedValue(quest.quest_name, language)}</h4>
                                 <button
                                     className="remove-btn"
-                                    onClick={() => onRemove(quest.quest_name)}
+                                    onClick={() => onRemove(getLocalizedValue(quest.quest_name, 'en'))}
                                     title="Stop Tracking"
                                 >
                                     &times;
@@ -59,7 +62,7 @@ const ActiveQuestSidebar = ({
                                 {quest.steps.map((step, idx) => (
                                     <li key={idx} className="step-item">
                                         <span className="step-bullet">•</span>
-                                        {step}
+                                        {getLocalizedValue(step, language)}
                                     </li>
                                 ))}
                             </ul>

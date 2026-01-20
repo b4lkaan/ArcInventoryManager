@@ -1,6 +1,8 @@
 import React, { useState, useMemo } from 'react';
 import { getAllQuestsWithSteps, getAllExpeditions, getAllUpgrades } from '../services/dataService';
 import { userProgressService } from '../services/userProgressService';
+import { useLanguage } from '../context/LanguageContext';
+import { getLocalizedValue } from '../utils/localization';
 import './QuestTracker.css';
 
 const QuestTracker = ({
@@ -13,6 +15,7 @@ const QuestTracker = ({
     completedUpgrades,
     onUpdateUpgrades
 }) => {
+    const { language } = useLanguage();
     const [activeTab, setActiveTab] = useState('quests');
 
     // Fetch data fresh each time the modal opens (useMemo recalculates when isOpen changes)
@@ -86,19 +89,20 @@ const QuestTracker = ({
                     {activeTab === 'quests' && (
                         <div className="quests-list">
                             {quests.map(quest => {
-                                const isDone = completedQuests.has(quest.quest_name);
-                                const isTracked = trackedQuests?.has(quest.quest_name);
+                                const questKey = getLocalizedValue(quest.quest_name, 'en');
+                                const isDone = completedQuests.has(questKey);
+                                const isTracked = trackedQuests?.has(questKey);
 
                                 return (
-                                    <div key={quest.quest_name} className={`quest-item ${isDone ? 'completed' : ''}`}>
+                                    <div key={questKey} className={`quest-item ${isDone ? 'completed' : ''}`}>
                                         <div className="quest-header-row">
                                             <label className="quest-main-check">
                                                 <input
                                                     type="checkbox"
                                                     checked={isDone}
-                                                    onChange={(e) => toggleQuest(quest.quest_name, e.target.checked)}
+                                                    onChange={(e) => toggleQuest(questKey, e.target.checked)}
                                                 />
-                                                <span className="quest-name">{quest.quest_name}</span>
+                                                <span className="quest-name">{getLocalizedValue(quest.quest_name, language)}</span>
                                             </label>
 
                                             <div className="quest-actions">
@@ -109,7 +113,7 @@ const QuestTracker = ({
                                                         className={`track-btn ${isTracked ? 'active' : ''}`}
                                                         onClick={(e) => {
                                                             e.stopPropagation();
-                                                            onToggleTrack(quest.quest_name, !isTracked);
+                                                            onToggleTrack(questKey, !isTracked);
                                                         }}
                                                         title={isTracked ? "Stop Tracking" : "Track in Sidebar"}
                                                     >
@@ -123,7 +127,7 @@ const QuestTracker = ({
                                             {quest.steps.length > 0 && (
                                                 <ul className="quest-steps-list">
                                                     {quest.steps.map((step, idx) => (
-                                                        <li key={idx}>• {step}</li>
+                                                        <li key={idx}>• {getLocalizedValue(step, language)}</li>
                                                     ))}
                                                 </ul>
                                             )}
