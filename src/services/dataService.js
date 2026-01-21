@@ -217,20 +217,7 @@ export const getAllUpgrades = () => {
  * @returns {Object} Recommendation with type, label, icon, color, and reason
  */
 export const getRecommendation = (item, completedUpgrades = new Set(), completedQuests = new Set()) => {
-  // 0. Core Component Priority - DO NOT SELL
-  if (item.is_core) {
-    return {
-      type: 'CRITICAL',
-      label: 'CORE COMPONENT',
-      icon: '💎',
-      color: '#dc2626',
-      bgColor: 'rgba(220, 38, 38, 0.15)',
-      reason: 'Essential Crafting Material',
-      subtext: 'Never sell - required for numerous recipes'
-    };
-  }
-
-  // 1. Quest Priority - CRITICAL
+  // 1. Quest Priority - CRITICAL (highest priority)
   // usage.quest is now an array
   if (item.usage?.quest?.length > 0) {
     // Filter out completed quests/expeditions
@@ -278,7 +265,57 @@ export const getRecommendation = (item, completedUpgrades = new Set(), completed
     };
   }
 
-  // 3. Donor Priority - STRATEGIC
+  // 3. Priority Category-based recommendations (from item_category.json)
+  if (item.priority_category) {
+    switch (item.priority_category) {
+      case 'base_component':
+      case 'core_component':
+        return {
+          type: 'CRITICAL',
+          label: item.priority_category === 'core_component' ? 'CORE COMPONENT' : 'BASE COMPONENT',
+          icon: item.priority_category === 'core_component' ? '⚙️' : '🧱',
+          color: item.priority_category === 'core_component' ? '#f59e0b' : '#6b7280',
+          bgColor: item.priority_category === 'core_component' ? 'rgba(245, 158, 11, 0.15)' : 'rgba(107, 114, 128, 0.15)',
+          reason: 'Essential Crafting Material',
+          subtext: 'Never sell - required for numerous recipes'
+        };
+
+      case 'high_priority_component':
+        return {
+          type: 'IMPORTANT',
+          label: 'HIGH PRIORITY',
+          icon: '⭐',
+          color: '#dc2626',
+          bgColor: 'rgba(220, 38, 38, 0.15)',
+          reason: 'Rare & Valuable Component',
+          subtext: 'Save for late-game crafting'
+        };
+
+      case 'donor':
+        return {
+          type: 'STRATEGIC',
+          label: 'RECYCLE ONLY',
+          icon: '♻️',
+          color: '#a855f7',
+          bgColor: 'rgba(168, 85, 247, 0.15)',
+          reason: `Critical Source for ${item.yields || 'Materials'}`,
+          subtext: item.notes || 'Do not sell - recycle for rare materials'
+        };
+
+      case 'safe_to_sell':
+        return {
+          type: 'LIQUIDATE',
+          label: 'SAFE TO SELL',
+          icon: '💰',
+          color: '#22c55e',
+          bgColor: 'rgba(34, 197, 94, 0.15)',
+          reason: 'Low-value materials only',
+          subtext: 'Sell freely - not needed for progression'
+        };
+    }
+  }
+
+  // 4. Legacy Donor Priority (fallback for items without priority_category)
   if (item.recommendation === 'RECYCLE PRIORITY' || item.recommendation === 'PRIORITY DONOR') {
     return {
       type: 'STRATEGIC',

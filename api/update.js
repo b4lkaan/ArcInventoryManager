@@ -1,5 +1,6 @@
 /* global process */
 import { put } from '@vercel/blob';
+import itemCategories from '../item_category.json';
 
 // 1. Component Prices (Copied from your data/componentPrices.js)
 const COMPONENT_PRICES = {
@@ -9,6 +10,11 @@ const COMPONENT_PRICES = {
     "advanced_electrical_components": 1750, "advanced_mechanical_components": 1750,
     "scrap": 1, "organic_matter": 10
 };
+
+// 2. Priority Category Lookup (from item_category.json)
+const CATEGORY_LOOKUP = Object.fromEntries(
+    itemCategories.map(item => [item.id, item.category])
+);
 
 // 2. GitHub Configuration
 const API_BASE = 'https://api.github.com/repos/RaidTheory/arcraiders-data/contents';
@@ -85,6 +91,7 @@ export default async function handler(request, response) {
                 id: rawItem.id,
                 name: rawItem.name || rawItem.id, // Preserve full localized object
                 category: rawItem.type || "Unknown",
+                priority_category: CATEGORY_LOOKUP[rawItem.id] || null, // From item_category.json
                 sell_price: rawItem.value,
                 recycle_value: roiData.recycleValue,
                 roi_pct: roiData.roiPct,

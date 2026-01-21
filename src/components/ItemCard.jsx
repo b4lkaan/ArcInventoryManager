@@ -3,6 +3,7 @@ import { getRecommendation } from '../services/dataService';
 import { useUserProgress } from '../context/UserProgressContext';
 import { useLanguage } from '../context/LanguageContext';
 import { getLocalizedValue } from '../utils/localization';
+import { getCategoryConfig } from '../data/categoryConfig';
 import VerdictBanner from './VerdictBanner';
 import './ItemCard.css';
 
@@ -22,6 +23,8 @@ export default function ItemCard({ item, onBack }) {
         [item, completedUpgrades, completedQuests]
     );
 
+    const priorityConfig = getCategoryConfig(item.priority_category);
+
     return (
         <div className="item-card">
             {/* Header */}
@@ -39,6 +42,19 @@ export default function ItemCard({ item, onBack }) {
                     )}
                     <h1>{getLocalizedValue(item.name, language)}</h1>
                     <span className="category-badge">{item.category}</span>
+                    {priorityConfig && (
+                        <span
+                            className="priority-category-badge"
+                            style={{
+                                backgroundColor: priorityConfig.bgColor,
+                                color: priorityConfig.color,
+                                borderColor: priorityConfig.color
+                            }}
+                        >
+                            <span className="priority-icon">{priorityConfig.icon}</span>
+                            {priorityConfig.shortLabel}
+                        </span>
+                    )}
                 </div>
             </div>
 

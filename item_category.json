@@ -1,0 +1,430 @@
+[
+    {
+        "id": "rubber_parts",
+        "category": "base_component"
+    },
+    {
+        "id": "fabric",
+        "category": "base_component"
+    },
+    {
+        "id": "durable_cloth",
+        "category": "base_component"
+    },
+    {
+        "id": "plastic_parts",
+        "category": "base_component"
+    },
+    {
+        "id": "metal_parts",
+        "category": "base_component"
+    },
+    {
+        "id": "chemicals",
+        "category": "base_component"
+    },
+    {
+        "id": "steel_spring",
+        "category": "core_component"
+    },
+    {
+        "id": "electrical_components",
+        "category": "core_component"
+    },
+    {
+        "id": "mechanical_components",
+        "category": "core_component"
+    },
+    {
+        "id": "battery",
+        "category": "core_component"
+    },
+    {
+        "id": "magnet",
+        "category": "core_component"
+    },
+    {
+        "id": "wires",
+        "category": "core_component"
+    },
+    {
+        "id": "advanced_mechanical_components",
+        "category": "high_priority_component"
+    },
+    {
+        "id": "advanced_electrical_components",
+        "category": "high_priority_component"
+    },
+    {
+        "id": "processor",
+        "category": "high_priority_component"
+    },
+    {
+        "id": "voltage_converter",
+        "category": "high_priority_component"
+    },
+    {
+        "id": "explosive_compound",
+        "category": "high_priority_component"
+    },
+    {
+        "id": "oil",
+        "category": "high_priority_component"
+    },
+    {
+        "id": "duct_tape",
+        "category": "high_priority_component"
+    },
+    {
+        "id": "sensors",
+        "category": "high_priority_component"
+    },
+    {
+        "id": "arc_alloy",
+        "category": "high_priority_component"
+    },
+    {
+        "id": "light_bulb",
+        "category": "high_priority_component"
+    },
+    {
+        "id": "humidifier",
+        "category": "high_priority_component"
+    },
+    {
+        "id": "cooling_fan",
+        "category": "high_priority_component"
+    },
+    {
+        "id": "exodus_modules",
+        "category": "high_priority_component"
+    },
+    {
+        "id": "magnetic_accelerator",
+        "category": "high_priority_component"
+    },
+    {
+        "id": "leaper_pulse_unit",
+        "category": "high_priority_component"
+    },
+    {
+        "id": "frequency_modulation_box",
+        "category": "high_priority_component"
+    },
+    {
+        "id": "ion_sputter",
+        "category": "high_priority_component"
+    },
+    {
+        "id": "shredder_gyro",
+        "category": "high_priority_component"
+    },
+    {
+        "id": "cooling_coil",
+        "category": "high_priority_component"
+    },
+    {
+        "id": "power_rod",
+        "category": "high_priority_component"
+    },
+    {
+        "id": "snap_hook",
+        "category": "high_priority_component"
+    },
+    {
+        "id": "apc_flex_rubber",
+        "category": "donor"
+    },
+    {
+        "id": "rubber_pad",
+        "category": "donor"
+    },
+    {
+        "id": "tattered_arc_lining",
+        "category": "donor"
+    },
+    {
+        "id": "ruined_parachute",
+        "category": "donor"
+    },
+    {
+        "id": "torn_blanket",
+        "category": "donor"
+    },
+    {
+        "id": "spring_cushion",
+        "category": "donor"
+    },
+    {
+        "id": "tattered_clothes",
+        "category": "donor"
+    },
+    {
+        "id": "arc_thermo_lining",
+        "category": "donor"
+    },
+    {
+        "id": "ruined_riot_shield",
+        "category": "donor"
+    },
+    {
+        "id": "arc_synthetic_resin",
+        "category": "donor"
+    },
+    {
+        "id": "ice_cream_scooper",
+        "category": "donor"
+    },
+    {
+        "id": "garlic_press",
+        "category": "donor"
+    },
+    {
+        "id": "frying_pan",
+        "category": "donor"
+    },
+    {
+        "id": "candle_holder",
+        "category": "donor"
+    },
+    {
+        "id": "bicycle_pump",
+        "category": "donor"
+    },
+    {
+        "id": "arc_performance_steel",
+        "category": "donor"
+    },
+    {
+        "id": "arc_coolant",
+        "category": "donor"
+    },
+    {
+        "id": "rusted_tools",
+        "category": "donor"
+    },
+    {
+        "id": "extended_mag",
+        "category": "donor"
+    },
+    {
+        "id": "mod_components",
+        "category": "donor"
+    },
+    {
+        "id": "flow_controller",
+        "category": "donor"
+    },
+    {
+        "id": "microscope",
+        "category": "donor"
+    },
+    {
+        "id": "mini_centrifuge",
+        "category": "donor"
+    },
+    {
+        "id": "rotary_encoder",
+        "category": "donor"
+    },
+    {
+        "id": "fried_motherboard",
+        "category": "donor"
+    },
+    {
+        "id": "signal_amplifier",
+        "category": "donor"
+    },
+    {
+        "id": "hornet_driver",
+        "category": "donor"
+    },
+    {
+        "id": "spectrometer",
+        "category": "donor"
+    },
+    {
+        "id": "telemetry_transceiver",
+        "category": "donor"
+    },
+    {
+        "id": "broken_flashlight",
+        "category": "donor"
+    },
+    {
+        "id": "geiger_counter",
+        "category": "donor"
+    },
+    {
+        "id": "cracked_bio_scanner",
+        "category": "donor"
+    },
+    {
+        "id": "broken_taser",
+        "category": "donor"
+    },
+    {
+        "id": "power_bank",
+        "category": "donor"
+    },
+    {
+        "id": "portable_tv",
+        "category": "donor"
+    },
+    {
+        "id": "ripped_safety_vest",
+        "category": "donor"
+    },
+    {
+        "id": "industrial_magnet",
+        "category": "donor"
+    },
+    {
+        "id": "rusted_gear",
+        "category": "donor"
+    },
+    {
+        "id": "turbo_pump",
+        "category": "donor"
+    },
+    {
+        "id": "sentinel_firing_core",
+        "category": "donor"
+    },
+    {
+        "id": "broken_handheld_radio",
+        "category": "donor"
+    },
+    {
+        "id": "power_cable",
+        "category": "donor"
+    },
+    {
+        "id": "projector",
+        "category": "donor"
+    },
+    {
+        "id": "alarm_clock",
+        "category": "safe_to_sell"
+    },
+    {
+        "id": "broken_guidance_system",
+        "category": "safe_to_sell"
+    },
+    {
+        "id": "coolant",
+        "category": "safe_to_sell"
+    },
+    {
+        "id": "diving_goggles",
+        "category": "safe_to_sell"
+    },
+    {
+        "id": "expired_respirator",
+        "category": "safe_to_sell"
+    },
+    {
+        "id": "headphones",
+        "category": "safe_to_sell"
+    },
+    {
+        "id": "industrial_charger",
+        "category": "safe_to_sell"
+    },
+    {
+        "id": "polluted_air_filter",
+        "category": "safe_to_sell"
+    },
+    {
+        "id": "radio",
+        "category": "safe_to_sell"
+    },
+    {
+        "id": "radio_relay",
+        "category": "safe_to_sell"
+    },
+    {
+        "id": "remote_control",
+        "category": "safe_to_sell"
+    },
+    {
+        "id": "thermostat",
+        "category": "safe_to_sell"
+    },
+    {
+        "id": "sample_cleaner",
+        "category": "safe_to_sell"
+    },
+    {
+        "id": "speaker_component",
+        "category": "safe_to_sell"
+    },
+    {
+        "id": "unusable_weapon",
+        "category": "safe_to_sell"
+    },
+    {
+        "id": "barricade_kit",
+        "category": "safe_to_sell"
+    },
+    {
+        "id": "burned_arc_circuitry",
+        "category": "safe_to_sell"
+    },
+    {
+        "id": "camera_lens",
+        "category": "safe_to_sell"
+    },
+    {
+        "id": "crumpled_plastic_bottle",
+        "category": "safe_to_sell"
+    },
+    {
+        "id": "damaged_arc_powercell",
+        "category": "safe_to_sell"
+    },
+    {
+        "id": "deflated_football",
+        "category": "safe_to_sell"
+    },
+    {
+        "id": "degraded_arc_rubber",
+        "category": "safe_to_sell"
+    },
+    {
+        "id": "dried_out_arc_resin",
+        "category": "safe_to_sell"
+    },
+    {
+        "id": "flame_spray",
+        "category": "safe_to_sell"
+    },
+    {
+        "id": "household_cleaner",
+        "category": "safe_to_sell"
+    },
+    {
+        "id": "number_plate",
+        "category": "safe_to_sell"
+    },
+    {
+        "id": "ruined_baton",
+        "category": "safe_to_sell"
+    },
+    {
+        "id": "ruined_handcuffs",
+        "category": "safe_to_sell"
+    },
+    {
+        "id": "rusty_arc_steel",
+        "category": "safe_to_sell"
+    },
+    {
+        "id": "spotter_relay",
+        "category": "safe_to_sell"
+    },
+    {
+        "id": "rusted_bolts",
+        "category": "safe_to_sell"
+    }
+]

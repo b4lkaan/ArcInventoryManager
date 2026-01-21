@@ -83,11 +83,24 @@
     color: var(--text-primary);
 }
 
+.result-meta {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
 .result-category {
     font-size: 0.75rem;
     color: var(--text-muted);
     text-transform: uppercase;
     letter-spacing: 0.05em;
+}
+
+.result-priority-badge {
+    font-size: 0.7rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.03em;
 }
 
 .result-badge {

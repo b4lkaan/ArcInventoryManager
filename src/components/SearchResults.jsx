@@ -3,6 +3,7 @@ import { getRecommendation } from '../services/dataService';
 import { useUserProgress } from '../context/UserProgressContext';
 import { useLanguage } from '../context/LanguageContext';
 import { getLocalizedValue } from '../utils/localization';
+import { getCategoryConfig } from '../data/categoryConfig';
 import './SearchResults.css';
 
 const SearchResults = React.memo(function SearchResults({ results, onSelect, query }) {
@@ -19,7 +20,8 @@ const SearchResults = React.memo(function SearchResults({ results, onSelect, que
     const processedResults = useMemo(() => {
         return results.map(item => ({
             ...item,
-            recommendation: getRecommendation(item, completedUpgrades, completedQuests)
+            recommendation: getRecommendation(item, completedUpgrades, completedQuests),
+            priorityConfig: getCategoryConfig(item.priority_category)
         }));
     }, [results, completedUpgrades, completedQuests]);
 
@@ -109,7 +111,17 @@ const SearchResults = React.memo(function SearchResults({ results, onSelect, que
                                 )}
                                 <div className="result-info">
                                     <span className="result-name">{getLocalizedValue(item.name, language)}</span>
-                                    <span className="result-category">{item.category}</span>
+                                    <div className="result-meta">
+                                        <span className="result-category">{item.category}</span>
+                                        {item.priorityConfig && (
+                                            <span
+                                                className="result-priority-badge"
+                                                style={{ color: item.priorityConfig.color }}
+                                            >
+                                                {item.priorityConfig.icon} {item.priorityConfig.shortLabel}
+                                            </span>
+                                        )}
+                                    </div>
                                 </div>
                             </div>
                             <div
