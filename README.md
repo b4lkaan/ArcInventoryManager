@@ -1,59 +1,103 @@
-# ARC Raiders Item Analyzer ⚡
+# ARC Raiders Inventory Manager ⚡
 
-A modern web application designed for ARC Raiders players to strategically manage their inventory. This tool helps players decide whether to **Keep**, **Sell**, or **Recycle** items based on real-time game data, quest requirements, and workshop upgrade needs.
+[![Aesthetics](https://img.shields.io/badge/Aesthetics-Premium-gold?style=for-the-badge)](https://github.com/b4lkaan/ArcInventoryManager)
+[![React](https://img.shields.io/badge/React-19-blue?style=for-the-badge&logo=react)](https://react.dev/)
+[![Vite](https://img.shields.io/badge/Vite-6-646CFF?style=for-the-badge&logo=vite)](https://vitejs.dev/)
+[![Deployment](https://img.shields.io/badge/Vercel-Deploys-black?style=for-the-badge&logo=vercel)](https://vercel.com)
 
-## 🚀 Features
+A high-performance, aesthetically-driven companion app for **ARC Raiders** survivors. This tool provides real-time strategic intelligence on whether to **Keep**, **Sell**, or **Recycle** loot based on your current hideout progression, active quests, and economic ROI.
 
-- **Smart Search**: Quickly find items in the database with instant results.
-- **Dynamic Recommendations**: Automatic "Keep" advice for quest-essential materials and workshop upgrades.
-- **Upgrade Tracker**: Track your workshop progress and mark upgrades as complete to dynamically update item recommendations.
-- **Profit Analysis**: Financial breakdown comparing selling price vs. recycling ROI.
-- **Visual Clarity**: Color-coded banners and intuitive icons for at-a-glance decision making.
-- **Core Component Flags**: Special identification for essential crafting base materials.
+---
 
-## 🧠 Decision Logic
+## ✨ Features
 
-The application uses a priority-based recommendation engine (`dataService.js`):
+- **🎯 Intelligent Recommendations**: Context-aware verdict engine that prioritizes quest items and hideout upgrades over short-term profit.
+- **🔍 Instant Search**: Ultra-fast search system with debouncing and keyboard navigation support.
+- **🌍 Global Localization**: Fully localized experience supporting English and other game languages.
+- **📊 Financial Analytics**: Real-time ROI calculations comparing selling price versus recycling yield based on component market values.
+- **🛠️ Progression Tracker**: Unified interface to track Quests, Hideout Upgrades, and Expedition Projects. Marking an upgrade as complete dynamically updates recommendations across the app.
+- **🌙 Premium UI**: Sleek, high-contrast dark mode design with glassmorphism effects and smooth micro-animations.
+- **🔄 Live Data Pipeline**: Automated serverless data ingestion from community sources via Vercel Blob storage.
 
-1.  **💎 Core Components**: Essential base materials (always marked as CRITICAL).
-2.  **⛔ Quest Priority**: Items required for active quests (marked as DO NOT SELL).
-3.  **🛠️ Upgrade Priority**: Materials needed for uncompleted workshop levels.
-4.  **♻️ Strategic Donors**: Items with high-value recycling yields or "Recycle Priority" flags.
-5.  **💰 Financial ROI**: Automatic calculation based on `sell_price` vs `recycle_value`.
-    - **PROFIT**: Recycling value exceeds selling price.
-    - **LIQUIDATE**: Selling price exceeds recycling value.
+---
 
-## 🛠️ Tech Stack
+## 🧠 Strategic Decision Engine
 
-- **Frontend**: React 19 + Vite
-- **Styling**: Vanilla CSS (Global variables, modern layout)
-- **Database**: JSON-based local data repository
-- **State Management**: React Hooks (useState, useEffect, useCallback)
+The app doesn't just look at prices; it understands your journey:
+
+1.  **💎 Critical Components**: Hard-coded recognition of essential base materials that should never be liquidated.
+2.  **⛔ Quest-Locked**: Items currently tracked for active scavenger quests are flagged as "DO NOT SELL".
+3.  **🛠️ Hideout Priority**: Materials required for your next hideout level or expedition project are highlighted.
+4.  **♻️ ROI Optimization**: Automated math to determine if an item is worth more as raw components or credits.
+5.  **⭐ Rarity Awareness**: Special handling for Rare/Elite items that provide high-value recycling yields.
+
+---
+
+## 🛠️ Technology Stack
+
+- **Framework**: [React 19](https://react.dev/) with Concurrent Mode.
+- **Routing**: [React Router 7](https://reactrouter.com/) for deep linking and history management.
+- **Styling**: Modern **Vanilla CSS** with HSL color tokens, CSS Variables, and Flexbox/Grid layouts.
+- **Data Layer**: React Context API (`DataContext`, `UserProgressContext`, `LanguageContext`) for efficient state propagation.
+- **Backend / CI**: Vercel Serverless Functions + Cron Jobs for daily data refreshes.
+- **Storage**: `@vercel/blob` for high-availability JSON data hosting.
+
+---
 
 ## 📦 Getting Started
 
 ### Prerequisites
-- Node.js (Latest LTS recommended)
-- npm or yarn
+
+- **Node.js** (v18+ recommended)
+- **npm** or **yarn**
 
 ### Installation
-1. Clone the repository
-2. Install dependencies:
+
 ```bash
+# Clone the repository
+git clone https://github.com/b4lkaan/ArcInventoryManager.git
+
+# Enter directory
+cd ArcInventoryManager
+
+# Install dependencies
 npm install
 ```
 
 ### Development
-Start the development server:
+
 ```bash
+# Run the development server
 npm run dev
+
+# Lint the codebase
+npm run lint
 ```
 
-### Build
-Generate a production-ready bundle:
+### Production
+
 ```bash
+# Build for production
 npm run build
+
+# Preview production build
+npm run preview
 ```
 
 ---
-*Created for ARC Raiders Survivors.*
+
+## 🙏 Credits & Acknowledgments
+
+This project is powered by the incredible data compiled by the ARC Raiders community.
+
+- **Data Source**: A massive thank you to [RaidTheory](https://github.com/RaidTheory) for the [arcraiders-data](https://github.com/RaidTheory/arcraiders-data) repository. This application uses their JSON datasets for items, quests, and hideout progression.
+- **Community**: Built for the survivors of the ARC.
+
+---
+
+## 📄 License
+
+Distributed under the MIT License. See `LICENSE` for more information.
+
+---
+*Created with ❤️ for the ARC Raiders community.*
