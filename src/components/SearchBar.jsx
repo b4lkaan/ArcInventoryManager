@@ -1,14 +1,14 @@
 import { useState, useEffect, useRef } from 'react';
 import './SearchBar.css';
 
-export default function SearchBar({ onSearch, onClear }) {
-    const [query, setQuery] = useState('');
+export default function SearchBar({ onSearch, onClear, initialQuery = '' }) {
+    const [query, setQuery] = useState(initialQuery);
     const inputRef = useRef(null);
 
     useEffect(() => {
         const timer = setTimeout(() => {
             onSearch(query);
-        }, 200);
+        }, 300);
 
         return () => clearTimeout(timer);
     }, [query, onSearch]);

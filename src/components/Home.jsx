@@ -1,63 +1,86 @@
-import React, { useState, useCallback } from 'react';
+import React, { useState, useCallback, useEffect } from 'react';
+import { Routes, Route, useNavigate, useParams, useSearchParams } from 'react-router-dom';
 import SearchBar from './SearchBar';
 import SearchResults from './SearchResults';
 import ItemCard from './ItemCard';
-import { findItem } from '../services/dataService';
+import { findItem, getAllItems } from '../services/dataService';
 
-const Home = () => {
+const SearchPage = () => {
+    const [searchParams, setSearchParams] = useSearchParams();
+    const query = searchParams.get('q') || '';
     const [searchResults, setSearchResults] = useState([]);
-    const [selectedItem, setSelectedItem] = useState(null);
-    const [query, setQuery] = useState('');
+    const navigate = useNavigate();
 
-    const handleSearch = useCallback((searchQuery) => {
-        setQuery(searchQuery);
-        if (!searchQuery.trim()) {
+    // Effect to perform search when query changes
+    useEffect(() => {
+        if (!query.trim()) {
             setSearchResults([]);
             return;
         }
-        const results = findItem(searchQuery);
+        const results = findItem(query);
         setSearchResults(results);
+    }, [query]);
 
-        // Auto-select if exact match (single result)
-        if (results.length === 1 && results[0].name.toLowerCase() === searchQuery.toLowerCase()) {
-            setSelectedItem(results[0]);
+    const handleSearch = useCallback((newQuery) => {
+        if (newQuery) {
+            setSearchParams({ q: newQuery });
         } else {
-            setSelectedItem(null);
+            setSearchParams({});
         }
-    }, []);
+    }, [setSearchParams]);
 
     const handleClear = useCallback(() => {
-        setSearchResults([]);
-        setSelectedItem(null);
-        setQuery('');
-    }, []);
+        setSearchParams({});
+    }, [setSearchParams]);
 
     const handleSelectItem = useCallback((item) => {
-        setSelectedItem(item);
-    }, []);
-
-    const handleBack = useCallback(() => {
-        setSelectedItem(null);
-    }, []);
-
-    if (selectedItem) {
-        return (
-            <ItemCard
-                item={selectedItem}
-                onBack={handleBack}
-            />
-        );
-    }
+        navigate(`/item/${item.id}`);
+    }, [navigate]);
 
     return (
         <>
-            <SearchBar onSearch={handleSearch} onClear={handleClear} />
+            <SearchBar onSearch={handleSearch} onClear={handleClear} initialQuery={query} />
             <SearchResults
                 results={searchResults}
                 onSelect={handleSelectItem}
                 query={query}
             />
         </>
+    );
+};
+
+const ItemDetailPage = () => {
+    const { id } = useParams();
+    const navigate = useNavigate();
+
+    // Find item by ID from all items
+    const item = getAllItems().find(i => i.id === id);
+
+    if (!item) {
+        return (
+            <div className="error-container" style={{ padding: '2rem', textAlign: 'center' }}>
+                <h2>Item not found</h2>
+                <button onClick={() => navigate('/')} className="back-button">
+                    Return to Search
+                </button>
+            </div>
+        );
+    }
+
+    return (
+        <ItemCard
+            item={item}
+            onBack={() => navigate(-1)}
+        />
+    );
+};
+
+const Home = () => {
+    return (
+        <Routes>
+            <Route path="/" element={<SearchPage />} />
+            <Route path="/item/:id" element={<ItemDetailPage />} />
+        </Routes>
     );
 };
 

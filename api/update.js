@@ -51,14 +51,14 @@ const fetchFolder = async (url) => {
     if (!listResponse.ok) throw new Error(`Failed to fetch list from ${url}`);
     const files = await listResponse.json();
 
-    const results = [];
-    for (const file of files) {
-        if (!file.name.endsWith('.json')) continue;
-        const contentRes = await fetch(file.download_url);
-        const content = await contentRes.json();
-        results.push(content);
-    }
-    return results;
+    const filePromises = files
+        .filter(file => file.name.endsWith('.json'))
+        .map(async (file) => {
+            const contentRes = await fetch(file.download_url);
+            return contentRes.json();
+        });
+
+    return Promise.all(filePromises);
 };
 
 // --- Main Handler ---
