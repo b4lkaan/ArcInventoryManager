@@ -6,15 +6,18 @@ import './index.css'
 import App from './App.jsx'
 import { LanguageProvider } from './context/LanguageContext.jsx'
 import { UserProgressProvider } from './context/UserProgressContext.jsx'
+import { DataProvider } from './context/DataContext.jsx'
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
     <LanguageProvider>
-      <UserProgressProvider>
-        <BrowserRouter>
-          <App />
-        </BrowserRouter>
-      </UserProgressProvider>
+      <DataProvider>
+        <UserProgressProvider>
+          <BrowserRouter>
+            <App />
+          </BrowserRouter>
+        </UserProgressProvider>
+      </DataProvider>
       <Toaster
         position="bottom-right"
         toastOptions={{
@@ -35,4 +38,5 @@ createRoot(document.getElementById('root')).render(
     </LanguageProvider>
   </StrictMode>,
 )
+
 

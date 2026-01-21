@@ -1,13 +1,19 @@
-import { useMemo } from 'react';
+import React, { useMemo, useState, useEffect, useCallback } from 'react';
 import { getRecommendation } from '../services/dataService';
 import { useUserProgress } from '../context/UserProgressContext';
 import { useLanguage } from '../context/LanguageContext';
 import { getLocalizedValue } from '../utils/localization';
 import './SearchResults.css';
 
-export default function SearchResults({ results, onSelect, query }) {
+const SearchResults = React.memo(function SearchResults({ results, onSelect, query }) {
     const { language } = useLanguage();
     const { completedUpgrades, completedQuests } = useUserProgress();
+    const [selectedIndex, setSelectedIndex] = useState(-1);
+
+    // Reset selection when results change
+    useEffect(() => {
+        setSelectedIndex(-1);
+    }, [results]);
 
     // Memoize the processed results to avoid recalculating recommendations on every render
     const processedResults = useMemo(() => {
@@ -16,6 +22,46 @@ export default function SearchResults({ results, onSelect, query }) {
             recommendation: getRecommendation(item, completedUpgrades, completedQuests)
         }));
     }, [results, completedUpgrades, completedQuests]);
+
+    // Keyboard navigation handler
+    const handleKeyDown = useCallback((e) => {
+        if (!results.length) return;
+
+        switch (e.key) {
+            case 'ArrowDown':
+                e.preventDefault();
+                setSelectedIndex(prev =>
+                    prev < results.length - 1 ? prev + 1 : prev
+                );
+                break;
+            case 'ArrowUp':
+                e.preventDefault();
+                setSelectedIndex(prev => prev > 0 ? prev - 1 : 0);
+                break;
+            case 'Enter':
+                e.preventDefault();
+                if (selectedIndex >= 0 && selectedIndex < results.length) {
+                    onSelect(results[selectedIndex]);
+                } else if (results.length === 1) {
+                    onSelect(results[0]);
+                }
+                break;
+            case 'Escape':
+                e.preventDefault();
+                setSelectedIndex(-1);
+                break;
+            default:
+                break;
+        }
+    }, [results, selectedIndex, onSelect]);
+
+    // Attach keyboard listener to document
+    useEffect(() => {
+        if (results.length > 0) {
+            document.addEventListener('keydown', handleKeyDown);
+            return () => document.removeEventListener('keydown', handleKeyDown);
+        }
+    }, [results.length, handleKeyDown]);
 
     if (!query || query.trim() === '') {
         return null;
@@ -39,16 +85,17 @@ export default function SearchResults({ results, onSelect, query }) {
             <div className="results-header">
                 <span className="results-count">{results.length} item{results.length !== 1 ? 's' : ''} found</span>
                 {results.length > 1 && (
-                    <span className="results-hint">Select an item to see full analysis</span>
+                    <span className="results-hint">↑↓ to navigate • Enter to select</span>
                 )}
             </div>
             <div className="results-list">
-                {processedResults.map((item) => {
+                {processedResults.map((item, index) => {
                     const rec = item.recommendation;
+                    const isSelected = index === selectedIndex;
                     return (
                         <button
                             key={item.id}
-                            className="result-item"
+                            className={`result-item ${isSelected ? 'selected' : ''}`}
                             onClick={() => onSelect(item)}
                         >
                             <div className="result-left">
@@ -82,4 +129,7 @@ export default function SearchResults({ results, onSelect, query }) {
             </div>
         </div>
     );
-}
+});
+
+export default SearchResults;
+

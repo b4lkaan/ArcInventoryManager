@@ -9,6 +9,35 @@ const KEYS = {
 const DB_URL = import.meta.env.VITE_DB_URL ||
     "https://3xepmfoaupvwolpr.public.blob.vercel-storage.com/arc_raiders_db.json";
 
+// Retry configuration
+const RETRY_CONFIG = {
+    maxAttempts: 3,
+    baseDelayMs: 1000, // 1 second, then 2s, then 4s
+};
+
+/**
+ * Fetch with exponential backoff retry
+ */
+const fetchWithRetry = async (url, onProgress, attempt = 1) => {
+    try {
+        const res = await fetch(url);
+        if (!res.ok) {
+            throw new Error(`HTTP ${res.status}: Failed to load database`);
+        }
+        return res;
+    } catch (error) {
+        if (attempt >= RETRY_CONFIG.maxAttempts) {
+            throw new Error(`Failed after ${attempt} attempts: ${error.message}`);
+        }
+
+        const delayMs = RETRY_CONFIG.baseDelayMs * Math.pow(2, attempt - 1);
+        onProgress?.(`Retry ${attempt}/${RETRY_CONFIG.maxAttempts} in ${delayMs / 1000}s...`);
+
+        await new Promise(resolve => setTimeout(resolve, delayMs));
+        return fetchWithRetry(url, onProgress, attempt + 1);
+    }
+};
+
 export const storageService = {
     // Check if we have data in memory
     hasData: () => {
@@ -22,20 +51,20 @@ export const storageService = {
     getQuests: () => JSON.parse(localStorage.getItem(KEYS.QUESTS) || "[]"),
     getUpgrades: () => JSON.parse(localStorage.getItem(KEYS.UPGRADES) || "{}"),
 
-    // Main Update Function
+    // Main Update Function with retry logic
     updateData: async (onProgress) => {
         onProgress("Downloading database...");
 
         try {
-            // Fetch the pre-processed JSON file directly
-            // add a timestamp to bypass browser caching if needed
-            const res = await fetch(`${DB_URL}?t=${Date.now()}`);
-            if (!res.ok) throw new Error("Failed to load database. ensure api/update has run at least once and DB_URL is correct.");
+            // Fetch with retry and cache-busting timestamp
+            const res = await fetchWithRetry(
+                `${DB_URL}?t=${Date.now()}`,
+                onProgress
+            );
 
             const db = await res.json();
 
-            // Load into your app state
-            // The structure matches what we built in api/update.js
+            // Store in localStorage
             localStorage.setItem(KEYS.ITEMS, JSON.stringify(db.items));
             localStorage.setItem(KEYS.QUESTS, JSON.stringify(db.quests));
             localStorage.setItem(KEYS.UPGRADES, JSON.stringify(db.upgrades));
@@ -43,8 +72,9 @@ export const storageService = {
             onProgress("Ready!");
             return true;
         } catch (e) {
-            console.error(e);
+            console.error('Storage service error:', e);
             throw e;
         }
     }
 };
+

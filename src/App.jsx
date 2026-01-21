@@ -4,10 +4,12 @@ import QuestTracker from './components/QuestTracker';
 import ActiveQuestSidebar from './components/ActiveQuestSidebar';
 import Layout from './components/Layout';
 import LoadingScreen from './components/LoadingScreen';
+import ErrorBoundary from './components/ErrorBoundary';
 import Home from './components/Home';
 import { reloadData } from './services/dataService';
 import { storageService } from './services/storageService';
 import { useUserProgress } from './context/UserProgressContext';
+import { useData } from './context/DataContext';
 import './App.css';
 
 function App() {
@@ -19,6 +21,7 @@ function App() {
   const [loadingStatus, setLoadingStatus] = useState("");
 
   const { refreshQuests } = useUserProgress();
+  const { reloadData: reloadDataContext } = useData();
 
   // Initialization Effect - runs once on mount
   useEffect(() => {
@@ -30,6 +33,7 @@ function App() {
             setLoadingStatus(status);
           });
           reloadData();
+          reloadDataContext();
           refreshQuests();
         } catch (err) {
           toast.error("Failed to update database: " + err.message);
@@ -41,7 +45,7 @@ function App() {
       }
     };
     init();
-  }, [refreshQuests]);
+  }, [refreshQuests, reloadDataContext]);
 
   if (isInitializing) {
     return <LoadingScreen status={loadingStatus} />;
@@ -49,19 +53,26 @@ function App() {
 
   return (
     <Layout onOpenProgression={() => setIsQuestTrackerOpen(true)}>
-      <Home />
+      <ErrorBoundary message="Failed to load the main content.">
+        <Home />
+      </ErrorBoundary>
 
-      <QuestTracker
-        isOpen={isQuestTrackerOpen}
-        onClose={() => setIsQuestTrackerOpen(false)}
-      />
+      <ErrorBoundary message="Failed to load the progression tracker.">
+        <QuestTracker
+          isOpen={isQuestTrackerOpen}
+          onClose={() => setIsQuestTrackerOpen(false)}
+        />
+      </ErrorBoundary>
 
-      <ActiveQuestSidebar
-        isOpen={isSidebarOpen}
-        onClose={() => setIsSidebarOpen(!isSidebarOpen)}
-      />
+      <ErrorBoundary message="Failed to load the quest sidebar.">
+        <ActiveQuestSidebar
+          isOpen={isSidebarOpen}
+          onClose={() => setIsSidebarOpen(!isSidebarOpen)}
+        />
+      </ErrorBoundary>
     </Layout>
   );
 }
 
 export default App;
+

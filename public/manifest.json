@@ -1,0 +1,42 @@
+{
+    "name": "Arc Inventory Manager",
+    "short_name": "ArcInv",
+    "description": "Item analyzer and progression tracker for Arc Raiders",
+    "start_url": "/",
+    "display": "standalone",
+    "background_color": "#0f172a",
+    "theme_color": "#3b82f6",
+    "orientation": "portrait-primary",
+    "icons": [
+        {
+            "src": "/vite.svg",
+            "sizes": "48x48",
+            "type": "image/svg+xml"
+        },
+        {
+            "src": "/vite.svg",
+            "sizes": "72x72",
+            "type": "image/svg+xml"
+        },
+        {
+            "src": "/vite.svg",
+            "sizes": "96x96",
+            "type": "image/svg+xml"
+        },
+        {
+            "src": "/vite.svg",
+            "sizes": "144x144",
+            "type": "image/svg+xml"
+        },
+        {
+            "src": "/vite.svg",
+            "sizes": "192x192",
+            "type": "image/svg+xml",
+            "purpose": "any maskable"
+        }
+    ],
+    "categories": [
+        "games",
+        "utilities"
+    ]
+}

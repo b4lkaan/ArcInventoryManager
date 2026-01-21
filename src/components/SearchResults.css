@@ -50,6 +50,12 @@
     transform: translateX(4px);
 }
 
+.result-item.selected {
+    background: var(--glass-hover);
+    border-color: var(--accent-blue);
+    box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.3);
+}
+
 .result-left {
     display: flex;
     align-items: center;
