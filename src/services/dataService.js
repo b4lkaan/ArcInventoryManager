@@ -1,5 +1,4 @@
 import { storageService } from './storageService';
-import { getLocalizedValue } from '../utils/localization';
 import localUpgradesData from '../../arc_raiders_upgrades.json';
 
 // Dynamic Storage Variables

@@ -4,11 +4,14 @@ import { Toaster } from 'react-hot-toast'
 import './index.css'
 import App from './App.jsx'
 import { LanguageProvider } from './context/LanguageContext.jsx'
+import { UserProgressProvider } from './context/UserProgressContext.jsx'
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
     <LanguageProvider>
-      <App />
+      <UserProgressProvider>
+        <App />
+      </UserProgressProvider>
       <Toaster
         position="bottom-right"
         toastOptions={{

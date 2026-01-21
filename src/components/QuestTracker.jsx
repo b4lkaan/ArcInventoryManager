@@ -1,20 +1,23 @@
 import React, { useState, useMemo } from 'react';
 import { getAllQuestsWithSteps, getAllExpeditions, getAllUpgrades } from '../services/dataService';
-import { userProgressService } from '../services/userProgressService';
+import { useUserProgress } from '../context/UserProgressContext';
 import { useLanguage } from '../context/LanguageContext';
 import { getLocalizedValue } from '../utils/localization';
 import './QuestTracker.css';
 
 const QuestTracker = ({
     isOpen,
-    onClose,
-    completedQuests,
-    onUpdate,
-    trackedQuests,
-    onToggleTrack,
-    completedUpgrades,
-    onUpdateUpgrades
+    onClose
 }) => {
+    const {
+        completedQuests,
+        toggleQuest,
+        trackedQuests,
+        toggleTrackedQuest,
+        completedUpgrades,
+        toggleUpgrade
+    } = useUserProgress();
+
     const { language } = useLanguage();
     const [activeTab, setActiveTab] = useState('quests');
 
@@ -37,18 +40,6 @@ const QuestTracker = ({
         });
         return grouped;
     }, [isOpen]);
-
-    const toggleQuest = (questName, isChecked) => {
-        const updated = userProgressService.toggleQuest(questName, isChecked);
-        onUpdate(new Set(updated));
-    };
-
-    const toggleUpgrade = (station, level, isChecked) => {
-        const updated = userProgressService.toggleUpgrade(station, level, isChecked);
-        if (onUpdateUpgrades) {
-            onUpdateUpgrades(new Set(updated));
-        }
-    };
 
     if (!isOpen) return null;
 
@@ -113,7 +104,7 @@ const QuestTracker = ({
                                                         className={`track-btn ${isTracked ? 'active' : ''}`}
                                                         onClick={(e) => {
                                                             e.stopPropagation();
-                                                            onToggleTrack(questKey, !isTracked);
+                                                            toggleTrackedQuest(questKey, !isTracked);
                                                         }}
                                                         title={isTracked ? "Stop Tracking" : "Track in Sidebar"}
                                                     >

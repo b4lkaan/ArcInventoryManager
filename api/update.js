@@ -1,3 +1,4 @@
+/* global process */
 import { put } from '@vercel/blob';
 
 // 1. Component Prices (Copied from your data/componentPrices.js)

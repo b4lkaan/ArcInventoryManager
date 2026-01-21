@@ -1,10 +1,21 @@
+import { useMemo } from 'react';
 import { getRecommendation } from '../services/dataService';
+import { useUserProgress } from '../context/UserProgressContext';
 import { useLanguage } from '../context/LanguageContext';
 import { getLocalizedValue } from '../utils/localization';
 import './SearchResults.css';
 
 export default function SearchResults({ results, onSelect, query }) {
     const { language } = useLanguage();
+    const { completedUpgrades, completedQuests } = useUserProgress();
+
+    // Memoize the processed results to avoid recalculating recommendations on every render
+    const processedResults = useMemo(() => {
+        return results.map(item => ({
+            ...item,
+            recommendation: getRecommendation(item, completedUpgrades, completedQuests)
+        }));
+    }, [results, completedUpgrades, completedQuests]);
 
     if (!query || query.trim() === '') {
         return null;
@@ -32,8 +43,8 @@ export default function SearchResults({ results, onSelect, query }) {
                 )}
             </div>
             <div className="results-list">
-                {results.map((item) => {
-                    const rec = getRecommendation(item);
+                {processedResults.map((item) => {
+                    const rec = item.recommendation;
                     return (
                         <button
                             key={item.id}

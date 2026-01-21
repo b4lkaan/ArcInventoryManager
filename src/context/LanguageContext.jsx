@@ -1,19 +1,14 @@
-import React, { createContext, useState, useContext, useEffect } from 'react';
+import React, { createContext, useState, useContext } from 'react';
 
 const STORAGE_KEY = 'arc_raiders_language';
 
 const LanguageContext = createContext();
 
 export const LanguageProvider = ({ children }) => {
-    const [language, setLanguage] = useState('en');
-
-    // Load saved preference on mount
-    useEffect(() => {
-        const savedLang = localStorage.getItem(STORAGE_KEY);
-        if (savedLang) {
-            setLanguage(savedLang);
-        }
-    }, []);
+    // Load saved preference on mount via lazy initialization to avoid set-state-in-effect warning
+    const [language, setLanguage] = useState(() => {
+        return localStorage.getItem(STORAGE_KEY) || 'en';
+    });
 
     // Save preference and update state
     const changeLanguage = (langCode) => {
@@ -32,6 +27,7 @@ export const LanguageProvider = ({ children }) => {
  * Hook to access language context
  * @returns {{ language: string, changeLanguage: (langCode: string) => void }}
  */
+// eslint-disable-next-line react-refresh/only-export-components
 export const useLanguage = () => {
     const context = useContext(LanguageContext);
     if (!context) {

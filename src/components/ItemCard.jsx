@@ -1,4 +1,6 @@
+import { useMemo } from 'react';
 import { getRecommendation } from '../services/dataService';
+import { useUserProgress } from '../context/UserProgressContext';
 import { useLanguage } from '../context/LanguageContext';
 import { getLocalizedValue } from '../utils/localization';
 import VerdictBanner from './VerdictBanner';
@@ -11,9 +13,14 @@ const formatRoi = (roiPct) => {
     return `${sign}${roiPct}%`;
 };
 
-export default function ItemCard({ item, onBack, completedUpgrades = new Set(), completedQuests = new Set() }) {
+export default function ItemCard({ item, onBack }) {
     const { language } = useLanguage();
-    const recommendation = getRecommendation(item, completedUpgrades, completedQuests);
+    const { completedUpgrades, completedQuests } = useUserProgress();
+
+    const recommendation = useMemo(() =>
+        getRecommendation(item, completedUpgrades, completedQuests),
+        [item, completedUpgrades, completedQuests]
+    );
 
     return (
         <div className="item-card">

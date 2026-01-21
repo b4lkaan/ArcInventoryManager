@@ -1,16 +1,16 @@
-import React, { useState } from 'react';
+import React from 'react';
+import { useUserProgress } from '../context/UserProgressContext';
 import { useLanguage } from '../context/LanguageContext';
 import { getLocalizedValue } from '../utils/localization';
 import './ActiveQuestSidebar.css';
 
 const ActiveQuestSidebar = ({
     isOpen,
-    onClose,
-    trackedQuests,
-    allQuests,
-    onRemove
+    onClose
 }) => {
     const { language } = useLanguage();
+    const { trackedQuests, allQuests, toggleTrackedQuest } = useUserProgress();
+
     // Filter full quest objects for tracked IDs (use English name for key matching)
     const questsToShow = allQuests.filter(q => trackedQuests.has(getLocalizedValue(q.quest_name, 'en')));
 
@@ -51,7 +51,7 @@ const ActiveQuestSidebar = ({
                                 <h4>{getLocalizedValue(quest.quest_name, language)}</h4>
                                 <button
                                     className="remove-btn"
-                                    onClick={() => onRemove(getLocalizedValue(quest.quest_name, 'en'))}
+                                    onClick={() => toggleTrackedQuest(getLocalizedValue(quest.quest_name, 'en'), false)}
                                     title="Stop Tracking"
                                 >
                                     &times;
