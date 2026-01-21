@@ -1,6 +1,6 @@
 /* global process */
 import { put } from '@vercel/blob';
-import itemCategories from '../item_category.json';
+import itemCategories from '../item_category.json' with { type: 'json' };
 
 // 1. Component Prices (Copied from your data/componentPrices.js)
 const COMPONENT_PRICES = {
