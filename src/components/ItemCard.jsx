@@ -4,6 +4,13 @@ import { getLocalizedValue } from '../utils/localization';
 import VerdictBanner from './VerdictBanner';
 import './ItemCard.css';
 
+// Helper function for formatting ROI percentage
+const formatRoi = (roiPct) => {
+    if (typeof roiPct === 'undefined') return 'N/A';
+    const sign = roiPct >= 0 ? '+' : '';
+    return `${sign}${roiPct}%`;
+};
+
 export default function ItemCard({ item, onBack, completedUpgrades = new Set(), completedQuests = new Set() }) {
     const { language } = useLanguage();
     const recommendation = getRecommendation(item, completedUpgrades, completedQuests);
@@ -50,7 +57,7 @@ export default function ItemCard({ item, onBack, completedUpgrades = new Set(), 
                         <div className="stat-item">
                             <span className="stat-label">ROI %</span>
                             <span className={`stat-value ${(item.roi_pct ?? 0) >= 0 ? 'positive' : 'negative'}`}>
-                                {typeof item.roi_pct !== 'undefined' ? `${item.roi_pct >= 0 ? '+' : ''}${item.roi_pct}%` : 'N/A'}
+                                {formatRoi(item.roi_pct)}
                             </span>
                         </div>
                         <div className="stat-item">

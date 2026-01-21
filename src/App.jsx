@@ -1,4 +1,5 @@
 import { useState, useCallback, useEffect } from 'react';
+import toast from 'react-hot-toast';
 import SearchBar from './components/SearchBar';
 import SearchResults from './components/SearchResults';
 import ItemCard from './components/ItemCard';
@@ -19,7 +20,7 @@ function App() {
   // Sidebar state
   const [isSidebarOpen, setIsSidebarOpen] = useState(true);
 
-  // NEW: Loading State
+  // Loading State
   const [isInitializing, setIsInitializing] = useState(true);
   const [loadingStatus, setLoadingStatus] = useState("");
 
@@ -35,37 +36,28 @@ function App() {
 
   const [allQuests, setAllQuests] = useState(() => getAllQuestsWithSteps());
 
-  // NEW: Update Handler
-  const handleUpdateDb = useCallback(async () => {
-    try {
-      setIsInitializing(true);
-      setLoadingStatus("Connecting to database...");
-
-      await storageService.updateData((status) => {
-        setLoadingStatus(status);
-      });
-
-      reloadData(); // Tell dataService to pick up new data
-      setAllQuests(getAllQuestsWithSteps()); // Refresh quest list for sidebar
-      setIsInitializing(false);
-    } catch (err) {
-      alert("Failed to update database: " + err.message);
-      setIsInitializing(false);
-    }
-  }, []);
-
-  // NEW: Initialization Effect
+  // Initialization Effect - runs once on mount
   useEffect(() => {
     const init = async () => {
-      // Check if we have data
       if (!storageService.hasData()) {
-        await handleUpdateDb();
+        try {
+          setLoadingStatus("Connecting to database...");
+          await storageService.updateData((status) => {
+            setLoadingStatus(status);
+          });
+          reloadData();
+          setAllQuests(getAllQuestsWithSteps());
+        } catch (err) {
+          toast.error("Failed to update database: " + err.message);
+        } finally {
+          setIsInitializing(false);
+        }
       } else {
         setIsInitializing(false);
       }
     };
     init();
-  }, [handleUpdateDb]);
+  }, []);
 
   const handleSearch = useCallback((searchQuery) => {
     setQuery(searchQuery);

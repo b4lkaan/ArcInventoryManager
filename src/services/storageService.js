@@ -5,9 +5,9 @@ const KEYS = {
     UPGRADES: 'arc_raiders_upgrades_v1'
 };
 
-// TODO: REPLACE THIS WITH YOUR ACTUAL BLOB URL AFTER FIRST SUCCESSFUL RUN OF api/update
-// Go to Vercel Storage -> Blob to find your store ID or full URL.
-const DB_URL = "https://3xepmfoaupvwolpr.public.blob.vercel-storage.com/arc_raiders_db.json";
+// Database URL from environment variable (set in .env as VITE_DB_URL)
+const DB_URL = import.meta.env.VITE_DB_URL ||
+    "https://3xepmfoaupvwolpr.public.blob.vercel-storage.com/arc_raiders_db.json";
 
 export const storageService = {
     // Check if we have data in memory
